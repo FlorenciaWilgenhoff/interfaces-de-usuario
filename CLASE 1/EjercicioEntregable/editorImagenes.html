@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Editor de imagenes</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/one-page-wonder.css">
+
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header " >
+        <h1>Editor de imagenes </h1>
+        </div>
+      </div>
+  </nav>
+
+  
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12" id="principal">
+        <!-- Contenido principal -->
+      </div>
+      </div>
+    </div>
+<div class="row"  >
+            <div class="col-12 col-md-12 col-lg-1 offset-1">
+              <div class="card" style="width: 7rem;">
+                <img src="images/panda.jpg" alt="Card image cap" class="card-img-top" height="155" width="100">
+                <div class="card-body">
+                  <button type="button" id="blackAndWhite" class="btn btn-lg btn-outline">B&W</button>
+                </div>
+              </div>
+            </div><!-- .col -->
+
+            <div class="col-12 col-md-12  col-lg-1">
+              <div class="card" style="width: 7rem;">
+                <img src="images/panda.jpg" alt="" class="rounded" height="155" width="100">
+                <div class="card-body">
+                  <button type="button" id="sepia" class="btn btn-lg btn-outline">Sepia</button>
+                </div>
+              </div>
+            </div><!-- .col -->
+
+            <div class="col-12 col-md-12  col-lg-1">
+              <div class="card" style="width: 7rem;">
+                <img src="images/panda.jpg" alt="" class="rounded" height="155" width="100">
+                <div class="card-body">
+                 <button type="button" id="contraste" class="btn btn-lg btn-outline ">Contraste</button>
+                </div>
+              </div>
+            </div><!-- .col -->
+
+            <div class="col-12 col-md-12  col-lg-1">
+              <div class="card" style="width: 7rem;">
+                <img src="images/panda.jpg" alt="" class="rounded" height="155" width="100">
+                <div class="card-body">
+                  <button type="button" id="brillo" class="btn btn-lg btn-outline">Brillo</button>
+                </div>
+              </div>
+            </div><!-- .col -->
+
+            <div class="col-12 col-md-12  col-lg-1">
+              <div class="card" style="width: 7rem;">
+                 <img src="images/panda.jpg" alt="" class="rounded" height="155" width="100">
+                <div class="card-body">
+                 <button type="button" id="saturacion" class="btn btn-lg btn-outline ">Saturar</button>
+                </div>
+              </div>
+                   
+            </div><!-- .col -->
+
+            <div class="col-12 col-md-12  col-lg-1">
+              <div class="card" style="width: 7rem;">
+                <img src="images/panda.jpg" alt="" class="rounded" height="155" width="100">
+                <div class="card-body">
+                  <button type="button" id="negativo"  class="btn btn-lg btn-outline ">Negativo</button>
+                </div>
+              </div>
+             </div><!-- .col -->
+
+           <div class="col-12 col-md-12  col-lg-1">
+            <div class="card" style="width: 7rem;">
+                <img src="images/panda.jpg" alt="" class="rounded" height="155" width="100">
+                <div class="card-body">
+                  <button type="button" id="binarizacion" class="btn btn-lg btn-outline">Binarizar</button>
+                </div>
+              </div>
+            </div><!-- .col -->
+
+           <div class="col-12 col-md-12  col-lg-1">
+            <div class="card" style="width: 7rem;">
+                <img src="images/panda.jpg" alt="" class="rounded" height="155" width="100">
+                <div class="card-body">
+                  <button type="button" id="suavizado" class="btn btn-lg btn-outline">Suavizar</button>
+                </div>
+              </div>
+            </div><!-- .col -->
+
+            <div class="col-12 col-md-12  col-lg-1">
+              <div class="card" style="width: 7rem;">
+                 <img src="images/panda.jpg" alt="" class="rounded" height="155" width="100">
+                  <div class="card-body">
+                    <button type="button" id="blur"class="btn btn-lg btn-outline">Blur</button>
+                  </div>
+                </div>
+            </div><!-- .col -->
+
+            <div class="col-12 col-md-12  col-lg-1">
+              <div class="card" style="width: 7rem;">
+                <img src="images/panda.jpg" alt="" class="rounded" height="155" width="100">
+                <div class="card-body">
+                <button type="button" id="detector"class="btn btn-lg btn-outline ">Deteccion de bordes</button>
+                  </div>
+            </div><!-- .col -->
+          
+</div>
+<div class="row">
+        </div><!-- .row -->
+<div class="row">
+    <section>
+<div class="col-lg-1 ml-right offset-2">
+    <div class="row">
+                    <button type="button" id="lapiz" class="btn btn-lg btn-outline">
+                        <img src="images/lapiz.png" alt="" class="rounded" height="55" width="50">
+                    </button>
+       </div><!-- .row -->
+        <div class="row">
+                    <button type="button" id="borrar" class="btn btn-lg btn-outline">
+                        <img src="images/borrar.png" alt="" class="rounded" height="55" width="50">
+                    </button>
+                      
+       </div><!-- .row -->
+
+      <div class="row">
+           <label class="btn btn-lg btn-outline">
+         <input id="range"  type="range" name="" value="50" style=" text-left">
+       </div><!-- .row -->
+
+      <div class="row">
+            <label class="btn btn-lg btn-outline">
+            <input id="selectImage" type="file" style="display: none" />
+            <img src="images/subirImagen.png" alt="" class="rounded" height="55" width="50">
+         
+             </div><!-- .row -->   
+         
+      <div class="row">
+                    <a href="" id="saveImage"class="btn btn-lg btn-outline" download="imagen.jpg">
+                        <img src="images/bajarImagen.png" alt="" class="rounded" height="55" width="50">
+                      </a>
+         </div><!-- .row -->       
+         
+      <div class="row">
+                    <button type="button" id="restoreImage" class="btn btn-lg btn-outline">
+                        <img src="images/restaurarImagen.png" alt="" class="rounded" height="55" width="50">
+                    </button>
+         
+       </div><!-- .row -->
+       </div><!-- .row -->
+</section>
+    <div class="col-lg-8 ml-center">
+    <canvas id="canvas" width="935" height="450" style="border:#000 solid 1px;" />
+</div> 
+  
+<script type='text/javascript' src='js/editorImagenes.js'></script>
+</body>
+</html>
+ <!--//Black and White+++
+ //Sepia+++
+ //Binarizacion+++
+ //Brillo+++
+ //Contraste+++
+ //Negativo+++
+ //Saturacion+++
+ //Suavizado
+ //Blur
+ //Detector de bordes
+ //Lapiz+++
+ //Goma+++
+-->
+
+
+ 
