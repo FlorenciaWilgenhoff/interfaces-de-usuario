@@ -1,8 +1,7 @@
-//ARREGLAR LAPIZ Y GOMA PARA QUE DIBUJE BIEN
-//ARREGLAR GOMA
-//MEJORAR COLORES DE DISEÑO
+//ARREGLAR BORDES GOMA
 //ARREGLAR SLIDERS
-//AGREGAR SLIDER PARA EFECTO BLUR 
+//AGREGAR FOTOS DE MUESTRA EDITADAS
+//MEJORAR COLORES DE DISEÑO
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 var width= canvas.width;
@@ -12,7 +11,7 @@ var imageDataOriginal;
 var image1 = new Image();
 //image1.src = "images/panda.jpg";
    ctx.fillStyle = "#FFFFFF";
-     ctx.fillRect(0, 0, canvas.width, canvas.height);
+   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 image1.onload = function(){
   canvas.width =this.width;
@@ -41,25 +40,31 @@ canvas.addEventListener("mousedown",click,false);
 
 function click(e){
      draw = true;
+     var rect = canvas.getBoundingClientRect();
 //Indico que vamos a dibujar
      ctx.beginPath();
 //Averiguo las coordenadas X e Y por dónde va pasando el mouse
-     ctx.moveTo(e.clientX, e.clientY);
+     ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
 }
 
 function toDraw(e){
+  var rect = canvas.getBoundingClientRect();
+  var grosor;
      if(draw){
+     ctx.lineWidth = document.grosor.valorgrosor.selectedIndex+1;
          ctx.strokeStyle="#000000";
-         ctx.lineTo(e.clientX,e.clientY);
+         ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
          ctx.stroke();
+       
      }
 }
-function toDelete(e){ //ARREGLAR ERROR DE QUE SI EMPIEZO LAPIZ Y DESPUES GOMA ME TOMA
-  //EL MISMMO COLOR QUE EL LAPIZ
+function toDelete(e){
+  var rect = canvas.getBoundingClientRect();
   if(draw){//que el borde de la linea sea blanco
+     ctx.lineWidth = document.grosor.valorgrosor.selectedIndex+1;
          ctx.strokeStyle="#FFFFFF";
          ctx.lineWidth = 5;
-         ctx.lineTo(e.clientX,e.clientY);
+         ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
          ctx.stroke();
      }
 }

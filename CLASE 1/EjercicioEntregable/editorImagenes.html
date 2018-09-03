@@ -23,18 +23,10 @@
   </nav>
 
   
-
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 col-md-12" id="principal">
-        <!-- Contenido principal -->
-      </div>
-      </div>
-    </div>
 <div class="row"  >
             <div class="col-12 col-md-12 col-lg-1 offset-1">
               <div class="card" style="width: 7rem;">
-                <img src="images/panda.jpg" alt="Card image cap" class="card-img-top" height="155" width="100">
+                <img src="images/imagenesMuestra/blancoNegro.jpg" alt="Card image cap" class="card-img-top" height="155" width="100">
                 <div class="card-body">
                   <button type="button" id="blackAndWhite" class="btn btn-lg btn-outline">B&W</button>
                 </div>
@@ -43,7 +35,7 @@
 
             <div class="col-12 col-md-12  col-lg-1">
               <div class="card" style="width: 7rem;">
-                <img src="images/panda.jpg" alt="" class="rounded" height="155" width="100">
+                <img src="images/imagenesMuestra/sepia.jpg" alt="Card image cap" class="card-img-top" height="155" width="100">
                 <div class="card-body">
                   <button type="button" id="sepia" class="btn btn-lg btn-outline">Sepia</button>
                 </div>
@@ -52,7 +44,7 @@
 
             <div class="col-12 col-md-12  col-lg-1">
               <div class="card" style="width: 7rem;">
-                <img src="images/panda.jpg" alt="" class="rounded" height="155" width="100">
+                <img src="images/imagenesMuestra/contraste.jpg" alt="" class="card-img-top" height="155" width="100">
                 <div class="card-body">
                  <button type="button" id="contraste" class="btn btn-lg btn-outline ">Contraste</button>
                 </div>
@@ -61,7 +53,7 @@
 
             <div class="col-12 col-md-12  col-lg-1">
               <div class="card" style="width: 7rem;">
-                <img src="images/panda.jpg" alt="" class="rounded" height="155" width="100">
+                <img src="images/imagenesMuestra/brillo.jpg" alt="" class="card-img-top"height="155" width="100">
                 <div class="card-body">
                   <button type="button" id="brillo" class="btn btn-lg btn-outline">Brillo</button>
                 </div>
@@ -70,7 +62,7 @@
 
             <div class="col-12 col-md-12  col-lg-1">
               <div class="card" style="width: 7rem;">
-                 <img src="images/panda.jpg" alt="" class="rounded" height="155" width="100">
+                 <img src="images/imagenesMuestra/saturar.jpg" alt="" class="card-img-top"height="155" width="100">
                 <div class="card-body">
                  <button type="button" id="saturacion" class="btn btn-lg btn-outline ">Saturar</button>
                 </div>
@@ -80,7 +72,7 @@
 
             <div class="col-12 col-md-12  col-lg-1">
               <div class="card" style="width: 7rem;">
-                <img src="images/panda.jpg" alt="" class="rounded" height="155" width="100">
+                <img src="images/imagenesMuestra/negativo.jpg" alt=""class="card-img-top" height="155" width="100">
                 <div class="card-body">
                   <button type="button" id="negativo"  class="btn btn-lg btn-outline ">Negativo</button>
                 </div>
@@ -89,7 +81,7 @@
 
            <div class="col-12 col-md-12  col-lg-1">
             <div class="card" style="width: 7rem;">
-                <img src="images/panda.jpg" alt="" class="rounded" height="155" width="100">
+                <img src="images/imagenesMuestra/binarizar.jpg" alt="" class="card-img-top" height="155" width="100">
                 <div class="card-body">
                   <button type="button" id="binarizacion" class="btn btn-lg btn-outline">Binarizar</button>
                 </div>
@@ -98,7 +90,7 @@
 
            <div class="col-12 col-md-12  col-lg-1">
             <div class="card" style="width: 7rem;">
-                <img src="images/panda.jpg" alt="" class="rounded" height="155" width="100">
+                <img src="images/imagenesMuestra/suavizar.jpg" alt="" class="card-img-top" height="155" width="100">
                 <div class="card-body">
                   <button type="button" id="suavizado" class="btn btn-lg btn-outline">Suavizar</button>
                 </div>
@@ -107,7 +99,7 @@
 
             <div class="col-12 col-md-12  col-lg-1">
               <div class="card" style="width: 7rem;">
-                 <img src="images/panda.jpg" alt="" class="rounded" height="155" width="100">
+                 <img src="images/imagenesMuestra/blur.jpg" alt="" class="card-img-top" height="155" width="100">
                   <div class="card-body">
                     <button type="button" id="blur"class="btn btn-lg btn-outline">Blur</button>
                   </div>
@@ -131,12 +123,28 @@
                     <button type="button" id="borrar" class="btn btn-lg btn-outline">
                         <img src="images/borrar.png" alt="" class="rounded" height="55" width="50">
                     </button>
-                      
+                 
        </div><!-- .row -->
-
+       <div class="row">
+         <label class="btn btn-lg btn-outline">
+     <form name="grosor">
+      <select name="valorgrosor">
+      <option value="1" selected>1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+   </select>
+</form>
+</div><!-- .row -->
       <div class="row">
            <label class="btn btn-lg btn-outline">
-         <input id="range"  type="range" name="" value="50" style=" text-left">
+         <input id="range"  type="range" name="valorgrosor" value="50" style=" text-left">
        </div><!-- .row -->
 
       <div class="row">
@@ -168,19 +176,6 @@
 <script src="js/jquery.js"></script>
 </body>
 </html>
- <!--//Black and White+++
- //Sepia+++
- //Binarizacion+++
- //Brillo+++
- //Contraste+++
- //Negativo+++
- //Saturacion+++
- //Suavizado
- //Blur
- //Detector de bordes
- //Lapiz+++
- //Goma+++
--->
-
+ 
 
  
