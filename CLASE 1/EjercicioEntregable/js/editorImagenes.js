@@ -1,8 +1,14 @@
+//ARREGLAR LAPIZ Y GOMA PARA QUE DIBUJE BIEN
+//ARREGLAR GOMA
+//MEJORAR COLORES DE DISEÑO
+//ARREGLAR SLIDERS
+//AGREGAR SLIDER PARA EFECTO BLUR 
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 var width= canvas.width;
 var height= canvas.height ;
 var imageData;
+var imageDataOriginal;
 var image1 = new Image();
 //image1.src = "images/panda.jpg";
    ctx.fillStyle = "#FFFFFF";
@@ -86,10 +92,12 @@ var Borrar = document.getElementById("borrar");
 buttonSave(); 
 
 function buttonSave(){
-  var save = document.getElementById("saveImage");
-  save.addEventListener("click", function(){
-    canvas.toDataURL("images/jpg");
-  });
+  var save = document.getElementById('saveImage');
+save.addEventListener('click', function (e) {
+  var c=document.getElementById("canvas");
+    var dataURL = c.toDataURL('images/png');
+    save.href = dataURL;
+});
 }
 
 buttonSelectImage();
@@ -120,8 +128,7 @@ function buttonRestore(){
   var restore = document.getElementById("restoreImage");
   restore.addEventListener("click", changeImage);
 }
-//pedidos negativo, brillo, binarización y sepia.
-//extras blanco y negro, contraste
+
 function blackAndWhite(){
   for ( x = 0; x < canvas.width; x++) {
    for ( y = 0; y < canvas.height; y++) {
@@ -222,7 +229,7 @@ function buttonBinarizacion(){
 
 buttonBinarizacion();
 
-function brillo(brightnessValue){ //TRATAR DE QUE NO SEA TAN BRILLOSO O OSCURO
+function brillo(brightnessValue){
   for ( x = 0; x < canvas.width; x++) {
    for ( y = 0; y < canvas.height; y++) {
     index = (x + y * imageData.width) * 4;
@@ -322,8 +329,30 @@ function buttonSaturacion(){
 });
 });    
   }
+
+  function applyMatrix(matrix,suma){
+   for ( x = 0; x < canvas.width; x++) {
+   for ( y = 0; y < canvas.height; y++) {
+      var r= Math.floor(( getRed(imageData,x-1,y-1)*matrix[0][0] + getRed(imageData,x,y-1)*matrix[0][1] + getRed(imageData,x+1,y-1)*matrix[0][2] +
+                getRed(imageData,x-1,y)*matrix[1][0] + getRed(imageData,x,y)*matrix[1][1] + getRed(imageData,x+1,y)*matrix[1][2] +
+                getRed(imageData,x-1,y+1)*matrix[2][0] + getRed(imageData,x,y-1)*matrix[2][1] + getRed(imageData,x+1,y+1)*matrix[2][2])/suma);
+        var b= Math.floor(( getBlue(imageData,x-1,y-1)*matrix[0][0] + getBlue(imageData,x,y-1)*matrix[0][1] + getBlue(imageData,x+1,y-1)*matrix[0][2] +
+                 getBlue(imageData,x-1,y)*matrix[1][0] + getBlue(imageData,x,y)*matrix[1][1] + getBlue(imageData,x+1,y)*matrix[1][2] +
+                 getBlue(imageData,x-1,y+1)*matrix[2][0] + getBlue(imageData,x,y-1)*matrix[2][1] + getBlue(imageData,x+1,y+1)*matrix[2][2])/suma);
+       var g= Math.floor(( getGreen(imageData,x-1,y-1)*matrix[0][0] + getGreen(imageData,x,y-1)*matrix[0][1] + getGreen(imageData,x+1,y-1)*matrix[0][2] +
+                getGreen(imageData,x-1,y)*matrix[1][0] + getGreen(imageData,x,y)*matrix[1][1] + getGreen(imageData,x+1,y)*matrix[1][2] +
+                getGreen(imageData,x-1,y+1)*matrix[2][0] + getGreen(imageData,x,y-1)*matrix[2][1] + getGreen(imageData,x+1,y+1)*matrix[2][2])/suma);
+
+
+
+        setPixel(imageData,x,y,r,g,b,255);
+      }
+    }
+  changeImage(imageData);
+}
 function Blur(imageData){
- 
+  var matrix=[[1,1,1],[1,1,1],[1,1,1]];
+  applyMatrix(matrix,9);
 
 }
 
@@ -335,18 +364,44 @@ function buttonBlur(){
   });
 }
 
-//Suavizado, Detección de Bordes, Blur.
+
+function Suavizado(){
+  var matrix=[[1,1,1],[1,8,1],[1,1,1]];
+  applyMatrix(matrix,16);
+}
+ 
+
+
+buttonSuavizado();
+function buttonSuavizado(){
+   var suavizado = document.getElementById("suavizado");
+  suavizado.addEventListener("click", function(){
+    Suavizado();
+  });
+}
+
+
+
 function getRed(imageData, x, y){
-  index = (x + y * imageData.width) * 4;
+  var index = (x + y * imageData.width) * 4;
   return imageData.data[index + 0];
 }
 
 function getGreen(imageData, x, y){
-  index = (x + y * imageData.width) * 4;
+  var index = (x + y * imageData.width) * 4;
   return imageData.data[index + 1];
 }
 
 function getBlue(imageData, x, y){
-  index = (x + y * imageData.width) * 4;
+  var index = (x + y * imageData.width) * 4;
   return imageData.data[index + 2];
 }
+
+function setPixel(imageData,x,y,r,g,b,a){
+  index= (x+y*imageData.width)*4;
+  imageData.data[index+0] =r;
+  imageData.data[index+1] =g;
+  imageData.data[index+2] =b;
+  imageData.data[index+3] =a;
+}
+
