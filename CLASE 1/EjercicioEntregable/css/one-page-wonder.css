@@ -14,6 +14,14 @@ nav {
 img.media-object {
   width: 200px;
 }
+.slide
+{
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+    width: 8px;
+    height: 170px;
+    padding: 0 5px;
+}
 
 .media {
   background-color: white;
@@ -35,7 +43,7 @@ img.media-object {
 
 .headline h1 {
   text-align: center;
-    font-size: 130px;
+    font-size: 13px;
     background: white;
 }
 

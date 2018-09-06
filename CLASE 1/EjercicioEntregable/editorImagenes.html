@@ -104,6 +104,15 @@
                     <button type="button" id="blur"class="btn btn-lg btn-outline">Blur</button>
                   </div>
                 </div>
+                </div><!-- .col -->
+
+                 <div class="col-12 col-md-12  col-lg-1">
+                  <div class="card-body">                    
+                 <label class="btn btn-lg btn-outline">
+                 <input id="range" class="slide"  type="range" name="valorgrosor" value="50" style=" text-left">  
+                  </div>
+                </div>
+
             </div><!-- .col -->
 
           
@@ -113,19 +122,24 @@
         </div><!-- .row -->
 <div class="row">
     <section>
-<div class="col-lg-1 ml-right offset-2">
+<div class="col-12 col-md-12  col-lg-1 offset-8">
     <div class="row">
                     <button type="button" id="lapiz" class="btn btn-lg btn-outline">
                         <img src="images/lapiz.png" alt="" class="rounded" height="55" width="50">
                     </button>
+
+          </div><!-- .col -->
        </div><!-- .row -->
+       
+       <div class="col-12 col-md-12  col-lg-1 offset-8">
         <div class="row">
                     <button type="button" id="borrar" class="btn btn-lg btn-outline">
                         <img src="images/borrar.png" alt="" class="rounded" height="55" width="50">
                     </button>
-                 
+                    </div><!-- .col -->
        </div><!-- .row -->
-       <div class="row">
+       <div class="col-12 col-md-12  col-lg-1 offset-8">
+        <div class="row">
          <label class="btn btn-lg btn-outline">
      <form name="grosor">
       <select name="valorgrosor">
@@ -142,18 +156,23 @@
    </select>
 </form>
 </div><!-- .row -->
-      <div class="row">
-           <label class="btn btn-lg btn-outline">
-         <input id="range"  type="range" name="valorgrosor" value="50" style=" text-left">
-       </div><!-- .row -->
-
-      <div class="row">
+     
+</div>
+      
+</section>
+    <div class="col-lg-8 ml-center offset-1 ">
+    <canvas id="canvas" width="900" height="450" style="border:#000 solid 1px;" />
+</div> 
+  <section>
+    <div class="col-lg-1 ml-right offset-6">
+  <div class="row">
+     
             <label class="btn btn-lg btn-outline">
             <input id="selectImage" type="file" style="display: none" />
             <img src="images/subirImagen.png" alt="" class="rounded" height="55" width="50">
          
              </div><!-- .row -->   
-         
+        
       <div class="row">
                     <a href="" id="saveImage"class="btn btn-lg btn-outline" download="imagen.jpg">
                         <img src="images/bajarImagen.png" alt="" class="rounded" height="55" width="50">
@@ -167,11 +186,8 @@
          
        </div><!-- .row -->
        </div><!-- .row -->
-</section>
-    <div class="col-lg-8 ml-center">
-    <canvas id="canvas" width="935" height="450" style="border:#000 solid 1px;" />
-</div> 
-  
+     </div>
+       </section>
 <script type='text/javascript' src='js/editorImagenes.js'></script>
 <script src="js/jquery.js"></script>
 </body>

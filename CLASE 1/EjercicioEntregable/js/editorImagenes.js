@@ -1,14 +1,13 @@
 //ARREGLAR BORDES GOMA
-//ARREGLAR SLIDERS
-//AGREGAR FOTOS DE MUESTRA EDITADAS
-//MEJORAR COLORES DE DISEÑO
+//ARREGLAR IMAGEN GRANDE SOBREPASA PANTALLA
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 var width= canvas.width;
 var height= canvas.height ;
 var imageData;
-var imageDataOriginal;
 var image1 = new Image();
+var erasing = false;
+var drawing = false;
 //image1.src = "images/panda.jpg";
    ctx.fillStyle = "#FFFFFF";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -16,64 +15,17 @@ var image1 = new Image();
 image1.onload = function(){
   canvas.width =this.width;
   canvas.height =this.height;
-  ctx.drawImage(this, 0, 0);
+  ctx.drawImage(this, 0, 0, this.width, this.height, 0,0,canvas.width, canvas.height);
   imageData = ctx.getImageData(0, 0, this.width, this.height);
 
 }
 
+
 function changeImage(imageData){
-  ctx.drawImage(image1, 0, 0);
+  ctx.drawImage(image1, 0, 0, image1.width, image1.height, 0,0, canvas.width, canvas.height);
   ctx.putImageData(imageData, 0,0);
 
 }
-
-function startDrawing(){
-canvas.addEventListener("mousedown",click,false);
-      canvas.addEventListener("mousemove",toDraw,false);
-      canvas.addEventListener("mouseup",release,false);
-}
-function startErasing(){
-canvas.addEventListener("mousedown",click,false);
-      canvas.addEventListener("mousemove",toDelete,false);
-      canvas.addEventListener("mouseup",release,false);
-}
-
-function click(e){
-     draw = true;
-     var rect = canvas.getBoundingClientRect();
-//Indico que vamos a dibujar
-     ctx.beginPath();
-//Averiguo las coordenadas X e Y por dónde va pasando el mouse
-     ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
-}
-
-function toDraw(e){
-  var rect = canvas.getBoundingClientRect();
-  var grosor;
-     if(draw){
-     ctx.lineWidth = document.grosor.valorgrosor.selectedIndex+1;
-         ctx.strokeStyle="#000000";
-         ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
-         ctx.stroke();
-       
-     }
-}
-function toDelete(e){
-  var rect = canvas.getBoundingClientRect();
-  if(draw){//que el borde de la linea sea blanco
-     ctx.lineWidth = document.grosor.valorgrosor.selectedIndex+1;
-         ctx.strokeStyle="#FFFFFF";
-         ctx.lineWidth = 5;
-         ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
-         ctx.stroke();
-     }
-}
-function release(e){
-//Indico que termino el dibujo
-     ctx.closePath();
-     draw = false;
-}
-
 
 buttonLapiz();
 
@@ -84,6 +36,35 @@ function buttonLapiz(){
   });
 }
 
+function startDrawing(){
+      canvas.addEventListener("mousedown",clickDrawing,false);
+      canvas.addEventListener("mousemove",toDraw,false);
+      canvas.addEventListener("mouseup",releaseDrawing,false);
+}
+
+function clickDrawing(e){
+     drawing = true;
+     var rect = canvas.getBoundingClientRect();
+     ctx.beginPath();
+     ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+}
+
+function toDraw(e){
+  var rect = canvas.getBoundingClientRect();
+  var grosor;
+     if(drawing){
+     ctx.lineWidth = document.grosor.valorgrosor.selectedIndex+1;
+         ctx.strokeStyle="#000000";
+         ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+         ctx.stroke();
+       
+     }
+}
+
+function releaseDrawing(e){
+     ctx.closePath();
+     drawing = false;
+}
 
 buttonBorrar();
 
@@ -93,6 +74,39 @@ var Borrar = document.getElementById("borrar");
     startErasing();
     });
 }
+
+function startErasing(){
+canvas.addEventListener("mousedown",clickErasing,false);
+      canvas.addEventListener("mousemove",toDelete,false);
+      canvas.addEventListener("mouseup",releaseErasing,false);
+}
+
+
+function clickErasing(e){
+     erasing = true;
+     var rect = canvas.getBoundingClientRect();
+     ctx.beginPath();
+     ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+}
+
+
+function toDelete(e){
+  var rect = canvas.getBoundingClientRect();
+  if(erasing){//que el borde de la linea sea blanco
+     ctx.lineWidth = document.grosor.valorgrosor.selectedIndex+1;
+         ctx.strokeStyle="#FFFFFF";
+         ctx.fillStyle="#FFFFFF";
+         ctx.lineWidth = 5;
+         ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+         ctx.stroke();
+     }
+}
+
+function releaseErasing(e){
+     ctx.closePath();
+     erasing = false;
+}
+
 
 buttonSave(); 
 
