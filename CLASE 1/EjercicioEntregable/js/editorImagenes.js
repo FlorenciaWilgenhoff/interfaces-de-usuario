@@ -15,14 +15,25 @@ var drawing = false;
 image1.onload = function(){
   canvas.width =this.width;
   canvas.height =this.height;
-  ctx.drawImage(this, 0, 0, this.width, this.height, 0,0,canvas.width, canvas.height);
+  ctx.drawImage(this, 0, 0);
   imageData = ctx.getImageData(0, 0, this.width, this.height);
 
 }
+function acomodarImagen(image1) {
+  var sizeHeight = 450;
+  var sizeWidth = 900;
+  canvas.height = sizeHeight;
+  canvas.width = sizeWidth;
+  canvas.height = canvas.width * image1.height / image1.width;
+  if(canvas.height > canvas.width){
+    canvas.height = sizeHeight;
+  }
+  canvas.width = canvas.height * image1.width / image1.height;
 
+}
 
 function changeImage(imageData){
-  ctx.drawImage(image1, 0, 0, image1.width, image1.height, 0,0, canvas.width, canvas.height);
+  ctx.drawImage(image1, 0, 0);
   ctx.putImageData(imageData, 0,0);
 
 }
@@ -31,28 +42,36 @@ buttonLapiz();
 
 function buttonLapiz(){
  var Lapiz = document.getElementById("lapiz");
-  Lapiz.addEventListener("click", function(){
+  Lapiz.addEventListener("click", function(e){
+    console.log("EstoyporentraralstartDrawing");
     startDrawing();
   });
 }
 
 function startDrawing(){
-      canvas.addEventListener("mousedown",clickDrawing,false);
-      canvas.addEventListener("mousemove",toDraw,false);
-      canvas.addEventListener("mouseup",releaseDrawing,false);
+  console.log("EentreastartDrawing");
+   canvas.removeEventListener("mousedown",clickErasing, false);
+   canvas.removeEventListener("mousemove",toDelete, false);
+   canvas.removeEventListener("mouseup",releaseErasing, false);
+      canvas.addEventListener("mousedown", clickDrawing, false);
+      canvas.addEventListener("mousemove",toDraw, false);
+      canvas.addEventListener("mouseup", releaseDrawing, false);
+     
 }
 
 function clickDrawing(e){
-     drawing = true;
+  console.log("mehicieronclick");
+     this.drawing = true;
      var rect = canvas.getBoundingClientRect();
      ctx.beginPath();
      ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
 }
 
 function toDraw(e){
+  console.log("Estoydibujando");
   var rect = canvas.getBoundingClientRect();
   var grosor;
-     if(drawing){
+     if(this.drawing){
      ctx.lineWidth = document.grosor.valorgrosor.selectedIndex+1;
          ctx.strokeStyle="#000000";
          ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
@@ -63,26 +82,34 @@ function toDraw(e){
 
 function releaseDrawing(e){
      ctx.closePath();
-     drawing = false;
+     this.drawing = false;
+     console.log("dejededibujar");
 }
 
 buttonBorrar();
 
 function buttonBorrar(){
 var Borrar = document.getElementById("borrar");
-  Borrar.addEventListener("click", function(){
+  Borrar.addEventListener("click", function(e){
+    console.log("EstoyporentraralstartErasing");
     startErasing();
     });
 }
 
 function startErasing(){
+  console.log("EentreastartErasing");
+   canvas.removeEventListener("mousedown",clickDrawing, false);
+   canvas.removeEventListener("mousemove",toDraw, false);
+   canvas.removeEventListener("mouseup",releaseDrawing, false);
 canvas.addEventListener("mousedown",clickErasing,false);
       canvas.addEventListener("mousemove",toDelete,false);
       canvas.addEventListener("mouseup",releaseErasing,false);
+
 }
 
 
 function clickErasing(e){
+  console.log("mehicieronclickenborrar");
      erasing = true;
      var rect = canvas.getBoundingClientRect();
      ctx.beginPath();
@@ -91,12 +118,12 @@ function clickErasing(e){
 
 
 function toDelete(e){
+  console.log("Estoyborrando");
   var rect = canvas.getBoundingClientRect();
   if(erasing){//que el borde de la linea sea blanco
      ctx.lineWidth = document.grosor.valorgrosor.selectedIndex+1;
          ctx.strokeStyle="#FFFFFF";
          ctx.fillStyle="#FFFFFF";
-         ctx.lineWidth = 5;
          ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
          ctx.stroke();
      }
@@ -105,6 +132,7 @@ function toDelete(e){
 function releaseErasing(e){
      ctx.closePath();
      erasing = false;
+     console.log("terminedeborrar");
 }
 
 
