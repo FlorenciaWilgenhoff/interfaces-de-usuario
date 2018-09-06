@@ -43,13 +43,11 @@ buttonLapiz();
 function buttonLapiz(){
  var Lapiz = document.getElementById("lapiz");
   Lapiz.addEventListener("click", function(e){
-    console.log("EstoyporentraralstartDrawing");
     startDrawing();
   });
 }
 
 function startDrawing(){
-  console.log("EentreastartDrawing");
    canvas.removeEventListener("mousedown",clickErasing, false);
    canvas.removeEventListener("mousemove",toDelete, false);
    canvas.removeEventListener("mouseup",releaseErasing, false);
@@ -60,7 +58,6 @@ function startDrawing(){
 }
 
 function clickDrawing(e){
-  console.log("mehicieronclick");
      this.drawing = true;
      var rect = canvas.getBoundingClientRect();
      ctx.beginPath();
@@ -68,7 +65,6 @@ function clickDrawing(e){
 }
 
 function toDraw(e){
-  console.log("Estoydibujando");
   var rect = canvas.getBoundingClientRect();
   var grosor;
      if(this.drawing){
@@ -83,7 +79,6 @@ function toDraw(e){
 function releaseDrawing(e){
      ctx.closePath();
      this.drawing = false;
-     console.log("dejededibujar");
 }
 
 buttonBorrar();
@@ -91,13 +86,11 @@ buttonBorrar();
 function buttonBorrar(){
 var Borrar = document.getElementById("borrar");
   Borrar.addEventListener("click", function(e){
-    console.log("EstoyporentraralstartErasing");
     startErasing();
     });
 }
 
 function startErasing(){
-  console.log("EentreastartErasing");
    canvas.removeEventListener("mousedown",clickDrawing, false);
    canvas.removeEventListener("mousemove",toDraw, false);
    canvas.removeEventListener("mouseup",releaseDrawing, false);
@@ -109,7 +102,6 @@ canvas.addEventListener("mousedown",clickErasing,false);
 
 
 function clickErasing(e){
-  console.log("mehicieronclickenborrar");
      erasing = true;
      var rect = canvas.getBoundingClientRect();
      ctx.beginPath();
@@ -118,9 +110,8 @@ function clickErasing(e){
 
 
 function toDelete(e){
-  console.log("Estoyborrando");
   var rect = canvas.getBoundingClientRect();
-  if(erasing){//que el borde de la linea sea blanco
+  if(erasing){
      ctx.lineWidth = document.grosor.valorgrosor.selectedIndex+1;
          ctx.strokeStyle="#FFFFFF";
          ctx.fillStyle="#FFFFFF";
@@ -132,7 +123,6 @@ function toDelete(e){
 function releaseErasing(e){
      ctx.closePath();
      erasing = false;
-     console.log("terminedeborrar");
 }
 
 
