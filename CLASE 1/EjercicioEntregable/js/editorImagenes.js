@@ -12,9 +12,11 @@ var drawing = false;
 image1.onload = function(){
   acomodarImagen(image1, canvas.width, canvas.height);
   ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
+  console.log("Primero");
   imageData = ctx.getImageData(0, 0, this.width, this.height);
 
 }
+
 function acomodarImagen(image1) {
   var sizeHeight = 450;
   var sizeWidth = 900;
@@ -27,12 +29,6 @@ function acomodarImagen(image1) {
 
 }
 
-function changeImage(imageData){
-  acomodarImagen(image1, canvas.width, canvas.height);
-  ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
-  ctx.putImageData(imageData, 0,0);
-
-}
 
 buttonLapiz();
 
@@ -52,6 +48,7 @@ function startDrawing(){
       canvas.addEventListener("mouseup", releaseDrawing, false);
      
 }
+
 
 function clickDrawing(e){
      this.drawing = true;
@@ -155,11 +152,23 @@ function buttonSelectImage() {
         image1.src= e.target.result;  
     }
 
+function createCanvas(){
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
+var width= 900;
+var height= 450;
+canvas.width = width;
+canvas.height = height;
+
+   ctx.fillStyle = "#FFFFFF";
+   ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
 buttonRestore();
 
 function buttonRestore(){
   var restore = document.getElementById("restoreImage");
-  restore.addEventListener("click", changeImage);
+  restore.addEventListener("click", createCanvas);
 }
 
 function blackAndWhite(){
@@ -175,7 +184,7 @@ function blackAndWhite(){
    }
  }
 
- changeImage(imageData);
+ ctx.putImageData(imageData, 0,0);
 }
 
 buttonBlackAndWhite();
@@ -201,7 +210,7 @@ function sepia(){
   }
 }
 
-changeImage(imageData);
+ctx.putImageData(imageData, 0,0);
 }
 
 buttonSepia();
@@ -213,6 +222,7 @@ function buttonSepia(){
   });
 }
 function negativo(){
+    acomodarImagen(image1, canvas.width, canvas.height);
   for ( x = 0; x < canvas.width; x++) {
    for ( y = 0; y < canvas.height; y++) {
      index = (x + y * imageData.width) * 4;
@@ -223,7 +233,7 @@ function negativo(){
    }
  }
 
- changeImage(imageData);
+ ctx.putImageData(imageData, 0,0);
 
 }
 
@@ -249,7 +259,7 @@ function binarizacion (){
   }
 }
 
-changeImage(imageData);
+ctx.putImageData(imageData, 0,0);
 
 }
 
@@ -273,7 +283,7 @@ function brillo(brightnessValue){
   }
 }
 
-changeImage(imageData);
+ctx.putImageData(imageData, 0,0);
 
 }
 buttonBrillo();
@@ -302,7 +312,7 @@ function contraste(contrastValue){
   }
 }
 
-changeImage(imageData);
+ctx.putImageData(imageData, 0,0);
 }
 
 buttonContraste();
@@ -346,7 +356,7 @@ function saturacion (saturationValue){
    }
  }
 
- changeImage(imageData);
+ ctx.putImageData(imageData, 0,0);
 
 }
 
@@ -381,7 +391,7 @@ function buttonSaturacion(){
         setPixel(imageData,x,y,r,g,b,255);
       }
     }
-  changeImage(imageData);
+  ctx.putImageData(imageData, 0,0);
 }
 function Blur(imageData){
   var matrix=[[1,1,1],[1,1,1],[1,1,1]];
