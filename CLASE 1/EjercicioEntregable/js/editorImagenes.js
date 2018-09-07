@@ -1,4 +1,3 @@
-//ARREGLAR IMAGEN GRANDE SOBREPASA PANTALLA
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 var width= canvas.width;
@@ -11,10 +10,8 @@ var drawing = false;
    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 image1.onload = function(){
-  canvas.width =this.width;
-  canvas.height =this.height;
-  acomodarImagen(image1);
-  ctx.drawImage(this, 0, 0);
+  acomodarImagen(image1, canvas.width, canvas.height);
+  ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
   imageData = ctx.getImageData(0, 0, this.width, this.height);
 
 }
@@ -28,12 +25,11 @@ function acomodarImagen(image1) {
   
   canvas.width = canvas.height * image1.width / image1.height;
 
-  //achicar o agrandar imagen
 }
 
 function changeImage(imageData){
-  acomodarImagen(image1);
-  ctx.drawImage(image1, 0, 0);
+  acomodarImagen(image1, canvas.width, canvas.height);
+  ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
   ctx.putImageData(imageData, 0,0);
 
 }
