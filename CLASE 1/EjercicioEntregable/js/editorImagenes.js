@@ -1,4 +1,3 @@
-//ARREGLAR BORDES GOMA
 //ARREGLAR IMAGEN GRANDE SOBREPASA PANTALLA
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
@@ -8,13 +7,13 @@ var imageData;
 var image1 = new Image();
 var erasing = false;
 var drawing = false;
-//image1.src = "images/panda.jpg";
    ctx.fillStyle = "#FFFFFF";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 image1.onload = function(){
   canvas.width =this.width;
   canvas.height =this.height;
+  acomodarImagen(image1);
   ctx.drawImage(this, 0, 0);
   imageData = ctx.getImageData(0, 0, this.width, this.height);
 
@@ -25,14 +24,15 @@ function acomodarImagen(image1) {
   canvas.height = sizeHeight;
   canvas.width = sizeWidth;
   canvas.height = canvas.width * image1.height / image1.width;
-  if(canvas.height > canvas.width){
-    canvas.height = sizeHeight;
-  }
+  if(canvas.height > canvas.width)canvas.height = sizeHeight;
+  
   canvas.width = canvas.height * image1.width / image1.height;
 
+  //achicar o agrandar imagen
 }
 
 function changeImage(imageData){
+  acomodarImagen(image1);
   ctx.drawImage(image1, 0, 0);
   ctx.putImageData(imageData, 0,0);
 
@@ -94,9 +94,9 @@ function startErasing(){
    canvas.removeEventListener("mousedown",clickDrawing, false);
    canvas.removeEventListener("mousemove",toDraw, false);
    canvas.removeEventListener("mouseup",releaseDrawing, false);
-canvas.addEventListener("mousedown",clickErasing,false);
-      canvas.addEventListener("mousemove",toDelete,false);
-      canvas.addEventListener("mouseup",releaseErasing,false);
+   canvas.addEventListener("mousedown",clickErasing,false);
+   canvas.addEventListener("mousemove",toDelete,false);
+   canvas.addEventListener("mouseup",releaseErasing,false);
 
 }
 
