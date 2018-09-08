@@ -12,7 +12,6 @@ var drawing = false;
 image1.onload = function(){
   acomodarImagen(image1, canvas.width, canvas.height);
   ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
-  console.log("Primero");
   imageData = ctx.getImageData(0, 0, this.width, this.height);
 
 }
@@ -23,10 +22,15 @@ function acomodarImagen(image1) {
   canvas.height = sizeHeight;
   canvas.width = sizeWidth;
   canvas.height = canvas.width * image1.height / image1.width;
+  console.log(canvas.height);
   if(canvas.height > canvas.width)canvas.height = sizeHeight;
-  
+  console.log(canvas.height);
   canvas.width = canvas.height * image1.width / image1.height;
-
+console.log(canvas.width);
+if((image1.height<=900)&&(image1.width<=900)){
+  canvas.height = image1.height;
+  canvas.width = image1.width;
+}
 }
 
 
@@ -280,6 +284,7 @@ function brillo(brightnessValue){
     imageData.data[index+1]=brightnessValue*getGreen(imageData, x, y);
     imageData.data[index+2]=brightnessValue*getBlue(imageData, x, y);
     imageData.data[index+3]=255;
+    
   }
 }
 
@@ -291,13 +296,35 @@ buttonBrillo();
 function buttonBrillo(){
   var brightness = document.getElementById("brillo");
   brightness.addEventListener("click", function(){
-    var rango = document.getElementById("range");
+   var brightnessValueDefault=2;
+   brillo(brightnessValueDefault);    
+  });
+}
+sliderBrightness();
+function sliderBrightness(){
+  var rango = document.getElementById("range");
     rango.addEventListener("change", function(){
 
-     brillo(this.value-50); 
-   
-});    
-  });
+     brillo(this.value-50);
+   });
+}
+
+sliderContrast();
+function sliderContrast(){
+  var rango = document.getElementById("range");
+    rango.addEventListener("change", function(){
+
+     contraste(this.value-50);
+   });
+}
+
+sliderSaturation();
+function sliderSaturation(){
+  var rango = document.getElementById("range");
+    rango.addEventListener("change", function(){
+
+     saturacion(this.value-50);
+   });
 }
 
 function contraste(contrastValue){
@@ -320,11 +347,8 @@ buttonContraste();
 function buttonContraste(){
   var contrast = document.getElementById("contraste");
   contrast.addEventListener("click", function(){
-   var rango = document.getElementById("range");
-    rango.addEventListener("change", function(){
-     contraste(this.value-50); 
-   
-});
+    var contrastValueDefault = 50;
+  contraste(contrastValueDefault);
 });    
   }
 
@@ -365,11 +389,8 @@ buttonSaturacion();
 function buttonSaturacion(){
   var saturation = document.getElementById("saturacion");
   saturation.addEventListener("click", function(){
-  var rango = document.getElementById("range");
-    rango.addEventListener("change", function(){
-     saturacion(this.value-49); 
-   
-});
+      var saturationValueDefault = 3;
+  saturacion(saturationValueDefault);
 });    
   }
 
