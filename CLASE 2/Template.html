@@ -1,0 +1,82 @@
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Template</title>
+    </head>
+
+    <canvas id="canvas" width="900" height="600" style="border:#000 solid 1px;" />
+    <body>
+
+    <script>
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d"); 
+        
+        function Circle(paramPosX, paramPosY, paramRadio, paramColor1, paramColor2, paramColor3){
+            this.posX = paramPosX;
+            this.posY = paramPosY;
+            this.radio = paramRadio;
+            this.color1 = paramColor1;
+            this.color2 = paramColor2;
+            this.color3 = paramColor3;
+
+        }
+          function CircleSecond(paramPosX, paramPosY, paramRadio, image){
+            this.posX = paramPosX;
+            this.posY = paramPosY;
+            this.radio = paramRadio;
+            this.img = image;
+
+        }
+        Circle.prototype.drawCircleGradient =  function (){
+            var gradient = ctx.createLinearGradient(
+                this.posX - this.radio, this.posY, 
+                this.posX + this.radio, this.posY);
+            gradient.addColorStop(0, this.color1);
+            gradient.addColorStop(0.5,  this.color2);
+            gradient.addColorStop(1,  this.color3);
+
+            ctx.beginPath();
+            ctx.arc(this.posX, this.posY, this.radio , 0, Math.PI*2);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            
+            ctx.closePath();
+        }
+        CircleSecond.prototype.drawCircleImage = function(){
+            ctx.beginPath();
+            var imagen = ctx.createPattern(this.img,"repeat");
+            ctx.arc(this.posX, this.posY, this.radio , 0, Math.PI*2);
+            ctx.fillStyle = imagen;
+            ctx.fill();
+            ctx.closePath();
+        }
+        var Circle1 = new Circle(250, 100, 100,'black', 'yellow', 'red');
+        Circle1.drawCircleGradient();
+        var Circle2 = new Circle(300, 350, 100, '#18BC9C', '#9900FF', '#18BC9C');
+        Circle2.drawCircleGradient();
+
+        let image = new Image();
+        image.src ="gato.jpg";
+        image.onload = function(){
+        var Circle3 = new CircleSecond(580, 350, 100, image);
+        Circle3.drawCircleImage();
+}
+
+
+
+    function Square(){
+
+    }
+    Square.prototype.drawSquare(){
+
+    }
+    var Square = new Square();
+    Square.drawSquare();
+
+
+
+       </script>
+</body>
+
+    </html>
