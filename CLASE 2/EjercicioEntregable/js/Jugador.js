@@ -6,11 +6,17 @@ class Jugador{
     }
 
 
-    getColor(){
+    getColour(){
     	this.colour;
     }
 
     getNombre(){
     	 this.nombre;
+    }
+    activarFichas(i){
+        this.drawFichasJugador[i].mouseDown(e);
+    }
+    desactivarFichas(i){
+        this.drawFichasJugador[i].mouseUp(e);
     }
 }

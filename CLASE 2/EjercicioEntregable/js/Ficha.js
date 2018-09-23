@@ -6,7 +6,7 @@
     this.img = imagen;
     this.color = color1;
     let ficha = this;
-    this.encastre = false;
+    this.arrastrar = false;
     canvas.addEventListener("mousedown", function (e) {
       ficha.mouseDown(e);
     });

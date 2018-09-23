@@ -1,8 +1,9 @@
      let canvas = document.getElementById("canvas");
      let ctx = canvas.getContext("2d");    
 
-var MAXFIL=6;
-var MAXCOL=7;
+const MAXFIL=7;
+const MAXCOL=8;
+const MAX=43;
  let drawTablero = new Array(MAXCOL); 
  for(let i=0;i<MAXFIL;i++){
  	drawTablero[i] = new Array(MAXCOL);
@@ -18,130 +19,72 @@ var MAXCOL=7;
  imagen.src ="images/4.png";
  imagen.onload = function(){
 
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
-  drawFichasJugadorUno.push(new Ficha (50, 50, 45, imagen, "red", drawFichasJugadorUno));
+  for (var i = 0; i < MAX; i++) { 
+  	drawFichasJugadorUno.push(new Ficha (40, 40, 36, imagen, "red", drawFichasJugadorUno));
+ 
+}
 
+for (var i = 0; i < MAX; i++) { 
+	drawFichasJugadorUno[i].draw();  
+}
+ 
+ for (var j = 0; j < MAX; j++) { 
+ 	drawFichasJugadorDos.push(new Ficha (150, 40, 36, imagen, "yellow", drawFichasJugadorDos));
   
-
-  for (var i = 0; i < drawFichasJugadorUno.length; i++) { 
-    drawFichasJugadorUno[i].draw();  
 }
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
-  drawFichasJugadorDos.push(new Ficha (170, 50, 45, imagen, "yellow", drawFichasJugadorDos));
 
- for (var i = 0; i < drawFichasJugadorDos.length; i++) { 
-    drawFichasJugadorDos[i].draw();  
+for (var j = 0; j <MAX; j++) { 
+ drawFichasJugadorDos[j].draw();  
 }
 }
 
-
+ 
 
   let image = new Image();
         image.src ="images/fondo1.jpg";
         image.onload = function(){
 
+let x=35; //se repite 7 veces
+let y=35; //se repite 6
+let radio=32;
+for (var i = 0; i < MAXFIL; i++) { 
+ 
+y=y+90;
+for (var j = 0; j < MAXCOL; j++) { 
+ 	drawTablero[i][j]=(new Casillero (x, y, radio,this));
+ 	 x=x+105;
+ 	 switch (x) {
+ 	  case x==35:
+	  x=135;
+	  case x==135:
+	  x=255;
+	  case x==255:
+	  x=375
+	   case x==375:
+	  x=495
+	   case x==495:
+	  x=635
+	  case x==635:
+	  x=735
+	  }
+if(x>735){
+	x=35;
+}
+ 
+ }
+ 
+}
 
-  drawTablero.push(new Casillero (50, 270, 45, this ));
-   drawTablero.push(new Casillero (50, 160, 45, this));
-  drawTablero.push(new Casillero (170, 160, 45, this));
-  drawTablero.push(new Casillero(290, 160, 45, this));
-  drawTablero.push(new Casillero(410, 160, 45, this));
-  drawTablero.push(new Casillero(530, 160, 45, this));
-  drawTablero.push(new Casillero(650, 160, 45, this));
-
-
-
-
-  drawTablero.push(new Casillero (170, 270, 45, this));
-  drawTablero.push(new Casillero(290, 270, 45, this));
-  drawTablero.push(new Casillero(410, 270, 45, this));
-  drawTablero.push(new Casillero(530, 270, 45, this));
-  drawTablero.push(new Casillero(650, 270, 45, this));
-
-
-   drawTablero.push(new Casillero (50, 380, 45, this));
-  drawTablero.push(new Casillero (170, 380, 45,this));
-  drawTablero.push(new Casillero(290, 380, 45, this));
-  drawTablero.push(new Casillero(410, 380, 45, this));
-  drawTablero.push(new Casillero(530, 380, 45, this));
-  drawTablero.push(new Casillero(650, 380, 45, this));
-
-   drawTablero.push(new Casillero (50, 490, 45, this));
-  drawTablero.push(new Casillero (170, 490, 45, this));
-  drawTablero.push(new Casillero(290, 490, 45, this));
-  drawTablero.push(new Casillero(410, 490, 45, this));
-  drawTablero.push(new Casillero(530, 490, 45, this));
-  drawTablero.push(new Casillero(650, 490, 45, this));
-
-   drawTablero.push(new Casillero (50, 600, 45, this));
-  drawTablero.push(new Casillero (170, 600, 45, this));
-  drawTablero.push(new Casillero(290, 600, 45, this));
-  drawTablero.push(new Casillero(410, 600, 45, this));
-  drawTablero.push(new Casillero(530, 600, 45, this));
-  drawTablero.push(new Casillero(650, 600, 45, this));
-
-   drawTablero.push(new Casillero (50, 710, 45, this));
-  drawTablero.push(new Casillero (170, 710, 45, this));
-  drawTablero.push(new Casillero(290, 710, 45,this));
-  drawTablero.push(new Casillero(410, 710, 45, this));
-  drawTablero.push(new Casillero(530, 710, 45, this));
-  drawTablero.push(new Casillero(650, 710, 45, this));
-
-   drawTablero.push(new Casillero (50, 820, 45, this));
-  drawTablero.push(new Casillero (170, 820, 45, this));
-  drawTablero.push(new Casillero(290, 820, 45, this));
-  drawTablero.push(new Casillero(410, 820, 45, this));
-  drawTablero.push(new Casillero(530, 820, 45, this));
-  drawTablero.push(new Casillero(650, 820, 45, this ));
-
-
-
-  for (let i = 0; i < MAXFIL; i++) {
+  
+ for (let i = 0; i < MAXFIL; i++) {
   	for (let j = 0; j < MAXCOL; j++) {
 	drawTablero[i][j].draw();
   	}
 	}
-
 }
+
+let juego = new Juego();
+juego.jugar(JugadorUno, JugadorDos);
 
 
 	function newCanvas(){
@@ -153,7 +96,10 @@ var MAXCOL=7;
 	    drawTablero[i][j].draw();  
 		}
 		}
-		for (var i = 0; i < drawFichasJugador.length; i++) { 
-    drawFichasJugador[i][j].draw();  
+		for (var i = 0; i <MAX; i++) { 
+		 drawFichasJugadorUno[i].draw();  
+		}
+		for (var j = 0; j <MAX; j++) { 
+		 drawFichasJugadorDos[j].draw();  
 		}
 	}
