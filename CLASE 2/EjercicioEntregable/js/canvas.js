@@ -17,25 +17,26 @@ const MAX=43;
 
  let imagen = new Image();
  imagen.src ="images/4.png";
- imagen.onload = function(){
-
-  for (var i = 0; i < MAX; i++) { 
+   for (var i = 0; i < MAX; i++) { 
   	drawFichasJugadorUno.push(new Ficha (40, 40, 36, imagen, "red", drawFichasJugadorUno));
  
 }
 
-for (var i = 0; i < MAX; i++) { 
-	drawFichasJugadorUno[i].draw();  
-}
- 
  for (var j = 0; j < MAX; j++) { 
  	drawFichasJugadorDos.push(new Ficha (150, 40, 36, imagen, "yellow", drawFichasJugadorDos));
   
 }
 
+ imagen.onload = function(){
+for (var i = 0; i < MAX; i++) { 
+	drawFichasJugadorUno[i].draw();  
+}
+
+
 for (var j = 0; j <MAX; j++) { 
  drawFichasJugadorDos[j].draw();  
 }
+
 }
 
  
@@ -83,23 +84,32 @@ if(x>735){
 	}
 }
 
+
+
 let juego = new Juego();
-juego.jugar(JugadorUno, JugadorDos);
+juego.jugar(JugadorDos, JugadorUno);
+ 
+
 
 
 	function newCanvas(){
 	 ctx.fillStyle = "blue";
 	 ctx.fillRect(0, 0, canvas.width, canvas.height);
 	
-		for (let i = 0; i < drawTablero.length; i++) { 
-	    for (let j = 0; j < drawTablero.length; j++) {
-	    drawTablero[i][j].draw();  
-		}
-		}
-		for (var i = 0; i <MAX; i++) { 
+
+	for (var i = 0; i <MAX; i++) { 
 		 drawFichasJugadorUno[i].draw();  
 		}
 		for (var j = 0; j <MAX; j++) { 
 		 drawFichasJugadorDos[j].draw();  
 		}
+
+		for (let i = 0; i < MAXFIL; i++) {
+		  	for (let j = 0; j < MAXCOL; j++) {
+			drawTablero[i][j].draw();
+		  	}
+			}
+		
 	}
+
+	

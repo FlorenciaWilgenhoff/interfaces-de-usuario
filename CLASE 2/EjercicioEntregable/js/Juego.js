@@ -1,37 +1,47 @@
 class Juego{
     //let fichaCont;
 	 jugar(jTurno, jNoTurno){
-       this.turnoJugador(jTurno);
-    	this.desahabilitarFichas(jTurno, jNoTurno);
+       this.turnoJugador(jTurno, jNoTurno);
     	this.colocarFicha(jTurno, jNoTurno);
         if(fichaCont>=7){
             this.ganador();
         }
     }
 
-    desahabilitarFichas(j1, j2){
-        j1.activarFichas(MAX-1);
-        j2.desahabilitarFichas(MAX-1);
+    desahabilitarFichas(jTurno, jNoTurno){
+        jNoTurno.desactivarFichas(MAX-1);
         }
 
-   turnoJugador(j){
-    	if(j.getColour()=="yellow"){
-    		return jugadorUno;
+   turnoJugador(jTurno, jNoTurno){
+    	if((jTurno.getColour()=="yellow")&&(jNoTurno.getColour()=="red")){
+    		 jTurno=jugadorUno;
+             jNoTurno =JugadorDos;
     	}else{
-    		return JugadorDos;
+    		jTurno=JugadorDos;
+            jNoTurno =JugadorUno;
     	}
+        this.desahabilitarFichas(jTurno, jNoTurno);
     }
 
     colocarFicha(j1, j2){
+        var i  =MAX-1;
     	for (var col = 0; col < MAXCOL; col++) {
-        if((j1.drawFichasJugador[MAX-1].posX>= (drawTablero[0][col].posX)-10)&&
-          (j1.drawFichasJugador[MAX-1].posX<= (drawTablero[0][col].posX)+10) && 
-          (j1.drawFichasJugador[MAX-1].posY>= (drawTablero[0][col].posY)-10)&&
-          (j1.drawFichasJugador[MAX-1].posY <= (drawTablero[0][col].posY)+10)){
+        if((j1.obtenerPosX(i))>= (this.posX(col)-10)&&
+          (j1.obtenerPosX(i))<= (this.posX(col)+10) && 
+          (j1.obtenerPosY(i))>= (this.posY(col)-10)&&
+          (j1.obtenerPosY(i)) <= (this.posY(col)+10)){
         	this.cambioFicha(col, j1);
         }
     }
 }
+posX(col){
+drawTablero[0][col].posicX();
+}
+
+ posY(col){
+drawTablero[0][col].posicY();
+}
+
     
      cambioFicha(col, j){
     	var fil=0;

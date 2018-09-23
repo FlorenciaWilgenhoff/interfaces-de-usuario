@@ -13,10 +13,14 @@ class Jugador{
     getNombre(){
     	 this.nombre;
     }
-    activarFichas(i){
-        this.drawFichasJugador[i].mouseDown(e);
-    }
+    
     desactivarFichas(i){
-        this.drawFichasJugador[i].mouseUp(e);
+        this.drawFichasJugador[i].noDrag();
+    }
+    obtenerPosX(i){
+        this.drawFichasJugador[i].getPosX();
+    }
+    obtenerPosX(i){
+        this.drawFichasJugador[i].getPosY();
     }
 }

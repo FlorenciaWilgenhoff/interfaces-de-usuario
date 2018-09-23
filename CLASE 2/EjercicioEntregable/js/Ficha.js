@@ -73,4 +73,17 @@
     getColor(){
      this.color;
     }
+
+    drag(){
+      this.arrastrar = true;
+    }
+    noDrag(){
+      this.arrastrar = false;
+    }
+    getPosX(){
+      this.posX;
+    }
+    getPosY(){
+      this.posY;
+    }
   }

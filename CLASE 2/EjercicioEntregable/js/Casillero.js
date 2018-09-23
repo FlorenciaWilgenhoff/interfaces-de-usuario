@@ -20,7 +20,13 @@ class Casillero{
             
             ctx.closePath();	
         }
-
+        posicX(){
+            this.posX;
+             console.log(this.posX);
+        }
+        posicY(){
+            this.posY;
+        }
     }
        
  
