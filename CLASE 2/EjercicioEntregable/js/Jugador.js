@@ -13,10 +13,12 @@ class Jugador{
     getNombre(){
     	 return this.nombre;
     }
-    getImg(){
-        return this.drawFichasJugador[0].getImagen();
+    getImg(i){
+        return this.drawFichasJugador[i].getImagen();
     }
-    
+    moviviendo(i){
+        this.drawFichasJugador[i].drag();
+    }
     desactivarFichas(i){    
         this.drawFichasJugador[i].noDrag();
     }
@@ -26,7 +28,17 @@ class Jugador{
     obtenerPosY(i){
         return this.drawFichasJugador[i].getPosY();
     }
-    movimiento(i){
-        return this.drawFichasJugador[i].meEstoyMoviendo();
+    obtenerRadio(i){
+        return this.drawFichasJugador[i].getRadio();
+    }
+    
+    eventoDown(i, e){
+        return this.drawFichasJugador[i].mouseDown(e);
+    }
+    eventoMove(i, e){
+        return this.drawFichasJugador[i].mouseMove(e);
+    }
+    eventoUp(i, e){
+            return this.drawFichasJugador[i].mouseUp(e);
     }
 }

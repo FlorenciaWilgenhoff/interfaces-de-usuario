@@ -2,7 +2,7 @@ class Juego{
     
 	 jugar(jTurno, jNoTurno, tablero){
        this.turnoJugador(jTurno, jNoTurno, tablero);
-    	//this.colocarFicha(jTurno, jNoTurno);
+    	this.colocarFicha(jTurno, jNoTurno);
         if(fichaCont>=7){
             this.ganador();
         }
@@ -10,7 +10,7 @@ class Juego{
     }
 
     desahabilitarFichas(jTurno, jNoTurno){
-        jNoTurno.desactivarFichas(MAX-1);
+        jNoTurno.desactivarFichas(0);
         }
 
    turnoJugador(jTurno, jNoTurno, tablero){
@@ -18,56 +18,60 @@ class Juego{
              console.log(jTurno);
              console.log("Segundo turno");
              console.log(jNoTurno);
-            /* let fil=0;
-             let col=1;
-             console.log(jTurno.getImg(fil));
-             let imagen = new Image();
-                imagen.src ="images/4.png";
-             imagen.onload = function(){
-            console.log(drawTablero[fil][col]=(new Casillero(tablero.getPosX(fil, col),tablero.getPosY(fil, col),tablero.getRadio(fil, col), imagen, jTurno.getColourChip(fil))));
-   }*/
+            
         this.desahabilitarFichas(jTurno, jNoTurno);
     }
 
     colocarFicha(j1, j2){
         var i  =0;
-        this.itsDrag(j1);
         let fil=0;
-        if(!this.itsDrag(j1)){
-    	for (var col = 0; col < MAXCOL; col++) {
-        if((j1.obtenerPosX(i))<= (tablero.getPosX(fil, col)+50)&&
-          (j1.obtenerPosX(i))>=(tablero.getPosX(fil, col)-50) && 
-          (j1.obtenerPosY(i))< (tablero.getPosX(fil, col))){
-        	this.cambioFicha(col, j1, j2, i);
-        }
-         
-    }
-}
+        let col=0;
+    canvas.addEventListener("mousedown", function (e) {
+      j1.eventoDown(i, e);
+    });
+    canvas.addEventListener("mousemove", function (e) {
+      j1.eventoMove(i, e);
+
+    });
+    canvas.addEventListener("mouseup", function(e) { 
+     j1.eventoUp(i, e);
+     let rect = canvas.getBoundingClientRect();
+      let cX = e.clientX-rect.left;
+      let cY = e.clientY-rect.top;
+      let d1= Math.sqrt(Math.pow(cX-j1.obtenerPosX(i),2)+Math.pow(cY-j1.obtenerPosY(i),2));
+      let d2 = Math.sqrt(Math.pow(cX-tablero.getPosX(fil, col),2)+Math.pow(cY-tablero.getPosY(fil, col),2));
+      let dist= d1+d2;
+      if(dist<j1.obtenerRadio(i)+tablero.getRadio(fil, col)){
+        console.log("antes",j1.drawFichasJugador[i]);
+       juego.cambioFicha(col, j1, j2, i);
+      } 
+    });
 }
 
- itsDrag(j1){
-j1.movimiento(i);
- }
        
 
     
      cambioFicha(col, j1, j2, i){
-    	var fil= MAXFIL-1;
-    	if(fil!=null){//PREGUNTAR SI ESE LUGAR ESTA OCUPADO
-             let fil=0;
-             let col=1;
-             let imagen = new Image();
-                imagen.src ="images/4.png";
-             imagen.onload = function(){
-           drawTablero[fil][col]=(new Casillero(tablero.getPosX(fil, col),tablero.getPosY(fil, col),tablero.getRadio(fil, col), imagen, jTurno.getColourChip(fil)));
-   }
-            j1.drawFichasJugador.splice(col, 1);
+         let fil=MAXFIL-1;
+         console.log("entroo");
+    	if(tablero.obtenerColor(fil, col)=="black"){//PREGUNTAR SI ESE LUGAR ESTA OCUPADO
+     let imagenNueva = new Image();
+     imagenNueva.src ="images/4.png";
+      
+      drawTablero[fil][col]=(new Casillero(tablero.getPosX(fil, col),tablero.getPosY(fil, col),tablero.getRadio(fil, col),imagenNueva, j1.getColourChip(i)));
+   
+   imagenNueva.onload = function(){
+    drawTablero[fil][col].draw();
+      }
+    }else{
+        fil--
+    }
+    console.log("dksjk",j1.drawFichasJugador.splice(i, 1));
+            j1.drawFichasJugador.splice(i, 1);
     		fichaCont++;
-    	}
-    	fil--;
         this.turnoJugador(j2, j1);
     }
-  
+ 
      ganador(posicion){
     	var pos=posicion;
     	if(posicion==null){

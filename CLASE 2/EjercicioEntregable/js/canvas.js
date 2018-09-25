@@ -7,9 +7,9 @@
 //como hacer que vuelva activar las fichas?
 
 
-const MAXFIL=7;
-const MAXCOL=8;
-const MAX=43;
+const MAXFIL=6;
+const MAXCOL=7;
+const MAX=42;
  let drawTablero = new Array(MAXCOL); 
  for(let i=0;i<MAXFIL;i++){
  	drawTablero[i] = new Array(MAXCOL);

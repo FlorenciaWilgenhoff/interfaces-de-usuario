@@ -8,16 +8,8 @@
     let ficha = this;
     this.arrastrar = false;
     this.termineMoverme = false;
-    canvas.addEventListener("mousedown", function (e) {
-      ficha.mouseDown(e);
-    });
-    canvas.addEventListener("mousemove", function (e) {
-      ficha.mouseMove(e);
-    });
-    canvas.addEventListener("mouseup", function(e) {  
-      ficha.mouseUp(e);
-    });
-
+    this.meMuevo = false;
+   
     }
     getImagen(){
       return this.img;
@@ -60,7 +52,6 @@
 
     mouseUp(e){
       this.arrastrar = false;
-       this.termineMoverme=true;
     }
 
     setPos(posX, posY){
@@ -92,7 +83,8 @@
     getPosY(){
      return  this.posY;
     }
-    meEstoyMoviendo(){
-      return this.termineMoverme;
+  
+    getRadio(){
+      return this.radio;
     }
   }
