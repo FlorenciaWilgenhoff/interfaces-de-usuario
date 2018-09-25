@@ -7,6 +7,7 @@
     this.color = color1;
     let ficha = this;
     this.arrastrar = false;
+    this.termineMoverme = false;
     canvas.addEventListener("mousedown", function (e) {
       ficha.mouseDown(e);
     });
@@ -17,6 +18,9 @@
       ficha.mouseUp(e);
     });
 
+    }
+    getImagen(){
+      return this.img;
     }
 
     draw  (){
@@ -44,6 +48,7 @@
 
     }
 
+    
     mouseMove(e){
 
       if(this.arrastrar){
@@ -55,6 +60,7 @@
 
     mouseUp(e){
       this.arrastrar = false;
+       this.termineMoverme=true;
     }
 
     setPos(posX, posY){
@@ -71,19 +77,22 @@
     }
 
     getColor(){
-     this.color;
+     return this.color;
     }
 
     drag(){
-      this.arrastrar = true;
+       this.arrastrar = true;
     }
     noDrag(){
-      this.arrastrar = false;
+       this.arrastrar = false;
     }
     getPosX(){
-      this.posX;
+     return  this.posX;
     }
     getPosY(){
-      this.posY;
+     return  this.posY;
+    }
+    meEstoyMoviendo(){
+      return this.termineMoverme;
     }
   }

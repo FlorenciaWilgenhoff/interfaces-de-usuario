@@ -6,21 +6,27 @@ class Jugador{
     }
 
 
-    getColour(){
-    	this.colour;
+    getColourChip(i){
+    	return this.drawFichasJugador[i].getColor();
     }
 
     getNombre(){
-    	 this.nombre;
+    	 return this.nombre;
+    }
+    getImg(){
+        return this.drawFichasJugador[0].getImagen();
     }
     
-    desactivarFichas(i){
+    desactivarFichas(i){    
         this.drawFichasJugador[i].noDrag();
     }
     obtenerPosX(i){
-        this.drawFichasJugador[i].getPosX();
+        return this.drawFichasJugador[i].getPosX();
     }
-    obtenerPosX(i){
-        this.drawFichasJugador[i].getPosY();
+    obtenerPosY(i){
+        return this.drawFichasJugador[i].getPosY();
+    }
+    movimiento(i){
+        return this.drawFichasJugador[i].meEstoyMoviendo();
     }
 }
