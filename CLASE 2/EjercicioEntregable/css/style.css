@@ -5,6 +5,7 @@ body {
      background-repeat: repeat;
     background-image: url("../images/fondo1.jpg")
 
+
 }
 
 .jugadorUno, .jugadorDos{
@@ -29,7 +30,7 @@ border-radius: 5px;
 }
 .h1{
   color: black;
-  font-family: "Arial Unicode MS";
+ font-family: 'Bangers', cursive;
 }
 
 
@@ -38,10 +39,12 @@ border-radius: 5px;
 	height:355px; 
 	width:145px;
 	opacity:1;
+	font-family: 'Bangers', cursive;
 }
 .cardJugador2{
 	background-color:#CEC666;
 	height:355px; 
 	width:145px;
 	opacity:1;
+	font-family: 'Bangers', cursive;
 }

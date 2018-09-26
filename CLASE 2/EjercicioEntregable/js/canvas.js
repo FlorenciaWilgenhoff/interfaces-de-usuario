@@ -18,8 +18,8 @@ const MAX=42;
  let drawFichasJugadorUno = []; 
  let drawFichasJugadorDos = []; 
 
-  let JugadorUno = new Jugador('red', drawFichasJugadorUno, "1");
-   let JugadorDos = new Jugador('yellow', drawFichasJugadorDos, "2");
+  let JugadorUno = new Jugador('red', drawFichasJugadorUno, "ROJO");
+   let JugadorDos = new Jugador('yellow', drawFichasJugadorDos, "AMARILLO");
 
  let imagen = new Image();
  imagen.src ="images/4.png";
@@ -45,7 +45,7 @@ for (var j = 0; j <MAX; j++) {
 
 }
 
- let fichaCont = 0;
+ let fichaCont = 1;
 
   let image = new Image();
         image.src ="images/fondo1.jpg";
@@ -65,15 +65,15 @@ for (var j = 0; j < MAXCOL; j++) {
 	  case x==135:
 	  x=255;
 	  case x==255:
-	  x=375
+	  x=375;
 	   case x==375:
-	  x=495
+	  x=495;
 	   case x==495:
-	  x=635
+	  x=635;
 	  case x==635:
-	  x=735
+	  x=735;
 	  }
-if(x>735){
+if(x>=735){
 	x=35;
 }
  
@@ -96,24 +96,31 @@ let juego = new Juego();
 juego.jugar(JugadorUno, JugadorDos, tablero);
  
 
+let nuevoNroFilas = MAXFIL-1;
+let columnasOcupadas = [];
+for (var i = 0; i <MAXCOL; i++) { 
+columnasOcupadas[i]=MAXFIL-1;
+}
 
 	function newCanvas(){
 	 ctx.fillStyle = "blue";
 	 ctx.fillRect(0, 0, canvas.width, canvas.height);
 	
-
-	for (var i = 0; i <MAX; i++) { 
+for (var i = 0; i <drawFichasJugadorUno.length; i++) { 
 		 drawFichasJugadorUno[i].draw();  
 		}
-		for (var j = 0; j <MAX; j++) { 
-		 drawFichasJugadorDos[j].draw();  
-		}
+		for (var j = 0; j <drawFichasJugadorDos.length; j++) { 
+			 drawFichasJugadorDos[j].draw();  
+			}
+
 
 		for (let i = 0; i < MAXFIL; i++) {
 		  	for (let j = 0; j < MAXCOL; j++) {
 			drawTablero[i][j].draw();
 		  	}
 			}
+	
+	
 		
 	}
 

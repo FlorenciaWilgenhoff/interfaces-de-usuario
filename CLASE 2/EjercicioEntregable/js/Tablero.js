@@ -2,7 +2,9 @@ class Tablero{
 	constructor(drawCasilleros){
 	this.drawCasilleros = drawCasilleros;
 	}
-
+	draw(fil, col){
+        return this.drawCasilleros[fil][col].draw();
+    }
 
 	getPosX(fil, col){
         return this.drawCasilleros[fil][col].posicX();

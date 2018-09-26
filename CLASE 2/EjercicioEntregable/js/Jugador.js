@@ -22,6 +22,9 @@ class Jugador{
     desactivarFichas(i){    
         this.drawFichasJugador[i].noDrag();
     }
+    activarFichas(i){    
+        this.drawFichasJugador[i].drag();
+    }
     obtenerPosX(i){
         return this.drawFichasJugador[i].getPosX();
     }
