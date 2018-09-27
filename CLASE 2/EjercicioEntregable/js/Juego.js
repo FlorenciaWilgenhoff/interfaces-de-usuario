@@ -119,7 +119,6 @@ class Juego{
     }
  
      ganador(j1){
-        console.log("entro a ganador");
     	let pos=0;
     	let contador = 1;
     		let fil = MAXFIL-1;
@@ -138,7 +137,6 @@ class Juego{
 
                             this.recorrerVerticalmente(j1);
                         }
-                         console.log("contador actual:" + contador );
     						if(contador==4){
     							this.hayGanador(j1);
     							fil=0;
@@ -157,7 +155,6 @@ class Juego{
     	
 
      recorrerVerticalmente(j1){
-        console.log("entro a vertical");
         let pos=0;
         let contador = 1;
             let fil = MAXFIL-1;
@@ -167,7 +164,7 @@ class Juego{
                 pos=columna;
                 for(let col=pos;col<MAXCOL;col++){
                 for(let fil=MAXFIL-1;fil>0;fil--){
-                        if(tablero.obtenerColor(fil, col)==tablero.obtenerColor(fil, col+1)){
+                        if(tablero.obtenerColor(fil, col)==tablero.obtenerColor(fil+1, col)){
                             contador++;
                         
                         }else{
