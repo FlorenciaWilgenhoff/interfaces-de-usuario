@@ -1,12 +1,6 @@
      let canvas = document.getElementById("canvas");
      let ctx = canvas.getContext("2d");    
 
-//QUE SOLO MUEVA UNA FICHA
-//QUE ANDE LO DE LOS TURNOS(desactivar fichas oponente);
-//-- cuando juega el otro deberia borrar los eventos mios
-//como hacer que vuelva activar las fichas?
-
-
 const MAXFIL=6;
 const MAXCOL=7;
 const MAX=42;
@@ -97,12 +91,6 @@ let tablero = new Tablero(drawTablero);
 let juego = new Juego();
 juego.jugar(JugadorUno, JugadorDos, tablero);
  
-
-let nuevoNroFilas = MAXFIL-1;
-let columnasOcupadas = [];
-for (var i = 0; i <MAXCOL; i++) { 
-columnasOcupadas[i]=MAXFIL-1;
-}
 
 	function newCanvas(){
 	 ctx.fillStyle = "blue";

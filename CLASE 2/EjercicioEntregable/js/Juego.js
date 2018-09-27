@@ -1,7 +1,7 @@
 class Juego{
    
 	 jugar(jTurno, jNoTurno, tablero){
-        if(fichaCont>=7){
+        if(fichaCont>6){
             this.ganador(jTurno);
         }
        this.turnoJugador(jTurno, jNoTurno, tablero);
@@ -12,16 +12,11 @@ class Juego{
   
 
    turnoJugador(jTurno, jNoTurno, tablero){
-    console.log("Primer turno");
-             console.log(jTurno);
-             console.log("Segundo turno");
-             console.log(jNoTurno);
-            
-        this.desahabilitarFichas(jTurno, jNoTurno);
+    this.desahabilitarFichas(jTurno, jNoTurno);
     }
 
       desahabilitarFichas(jTurno, jNoTurno){
-        jNoTurno.desactivarFichas(0);//CAMBIAR ESO DE POS
+        jNoTurno.desactivarFichas(0);
         }
 
     colocarFicha(j1, j2, tablero){
@@ -39,7 +34,6 @@ class Juego{
     canvas.addEventListener("mouseup", function(e) { 
      j1.eventoUp(i, e);
      let col=0;
-     35,135, 255, 375, 495, 635, 735
     if(j1.obtenerPosX(i)>=0&&j1.obtenerPosX(i)<85){
         col=0;
     }else{
@@ -84,25 +78,16 @@ class Juego{
 
     
      cambioFicha(col, j1, j2, i, tablero){
-       
-       for(let fil=0;fil<MAXFIL;fil++){
-        console.log("la fila es ",fil);
-    	console.log(tablero.getOcup(fil, col));
-        if(tablero.getOcup(fil, col)=="libre"){
-           console.log("la fila es ",fil);
+       let fil = MAXFIL-1;
+       while(fil>=0&&tablero.getOcup(fil, col)!="libre"){
+           fil--;
+       }
         let imagenNueva = new Image();
         imagenNueva.src ="images/fondo1.jpg";
         imagenNueva.onload = function(){
         drawTablero[fil][col]=(new Casillero(tablero.getPosX(fil, col),tablero.getPosY(fil, col),tablero.getRadio(fil, col),imagenNueva, j1.getColourChip(i), "ocupado"));
         tablero.draw(fil, col);
-        console.log("la fila es ",fil);
-        
-      }
-      fil=MAXFIL-1;
-        
-        console.log("la fila es ",fil);
-    }
-    
+        fil=MAXFIL-1;
 }
             j1.drawFichasJugador.splice(i, 1);
             this.nuevoCanvas(j1, j2);
@@ -135,9 +120,7 @@ class Juego{
  
      ganador(j1){
         console.log("entro a ganador");
-        let posicion=0;
-    	let pos=MAXCOL-1;
-    	
+    	let pos=0;
     	let contador = 1;
     		let fil = MAXFIL-1;
     		let columna = 0;
@@ -145,45 +128,69 @@ class Juego{
     			pos=columna;
     			for(let fil=MAXFIL-1;fil>0;fil--){
     				for(let col=pos;col<MAXCOL;col++){
-                       
-    					if(tablero.obtenerColor(fil, col)==tablero.obtenerColor(fil, col+1)){
-    						contador++;
-    					}else{
-                            console.log("estoy por entrar");
-    						this.recorrerVerticalmente(fil, col, j1);
-    					}
+                       if(tablero.obtenerColor(fil, col)==tablero.obtenerColor(fil, col+1)){
+                            contador++;
+                        
+                        }else{
+                            contador=1;
+                        }
+                        if(fil==0&&col==MAXCOL){
+
+                            this.recorrerVerticalmente(j1);
+                        }
                          console.log("contador actual:" + contador );
     						if(contador==4){
     							this.hayGanador(j1);
     							fil=0;
                                 col=MAXCOL;
-    						}
+    						
     					}
     				}
+                    
         }
+       
      }
+     col++;
+     
+  }
  
     	
 
-     recorrerVerticalmente(fil, col, j1){
+     recorrerVerticalmente(j1){
         console.log("entro a vertical");
+        let pos=0;
         let contador = 1;
+            let fil = MAXFIL-1;
+            let columna = 0;
+        let contador = 1;
+    			while((tablero.obtenerColor(fil, columna)=="red")||(tablero.obtenerColor(fil, columna)=="yellow")){
+                pos=columna;
+                for(let col=pos;col<MAXCOL;col++){
+                for(let fil=MAXFIL-1;fil>0;fil--){
+                        if(tablero.obtenerColor(fil, col)==tablero.obtenerColor(fil, col+1)){
+                            contador++;
+                        
+                        }else{
+                            contador=1;
+                        }
+                        if(fil==0&&col==MAXCOL){
+                            this.recorrerDiagonalmenteAtras(fil, columna, col, j1);
+                        }
+                        
+                            if(contador==4){
+                                this.hayGanador(j1);
+                                fil=0;
+                                 col=MAXCOL;
+                            }
+                          
+                    }
+                    
+        }
+       
+     }
+     fil--;
+  	}
     			
-                    for(let colum=col-1;colum<MAXCOL;colum++){
-                        for(let fil=MAXFIL-1;fil>0;fil--){
-    					if(tablero.obtenerColor(fila, colum)==tablero.obtenerColor(fila-1, colum)){
-    						contador++;
-    					}else{
-    						this.recorrerDiagonalmente(fila, colum, col, j1);
-    					}
-    						if(contador==4){
-    							this.hayGanador(j1);
-    							fila=0;
-                                colum=MAXCOL;
-    						}
-    					}
-    				}
-    			}
                 recorrerDiagonalmenteAtras(fil, col, pos, j1){
                 for(var fil=MAXFIL-1;fil>0;fil--){
                     for(var col=pos;col<MAXCOL;col++){
