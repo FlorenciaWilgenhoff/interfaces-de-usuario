@@ -84,25 +84,26 @@ class Juego{
 
     
      cambioFicha(col, j1, j2, i, tablero){
-       let fil=columnasOcupadas[col];
-      console.log(fil);
-    	if(tablero.obtenerColor(fil, col)=="black"){
-            console.log("entro por segunda vez");
+       
+       for(let fil=0;fil<MAXFIL;fil++){
+        console.log("la fila es ",fil);
+    	console.log(tablero.getOcup(fil, col));
+        if(tablero.getOcup(fil, col)=="libre"){
+           console.log("la fila es ",fil);
         let imagenNueva = new Image();
         imagenNueva.src ="images/fondo1.jpg";
         imagenNueva.onload = function(){
-        drawTablero[fil][col]=(new Casillero(tablero.getPosX(fil, col),tablero.getPosY(fil, col),tablero.getRadio(fil, col),imagenNueva, j1.getColourChip(i)));
+        drawTablero[fil][col]=(new Casillero(tablero.getPosX(fil, col),tablero.getPosY(fil, col),tablero.getRadio(fil, col),imagenNueva, j1.getColourChip(i), "ocupado"));
         tablero.draw(fil, col);
+        console.log("la fila es ",fil);
         
-       
-       
       }
-    }else{
-        fil--;
+      fil=MAXFIL-1;
+        
+        console.log("la fila es ",fil);
     }
-    nuevoNroFilas--;
-    columnasOcupadas[col]=nuevoNroFilas;
-    console.log("depsues",columnasOcupadas);
+    
+}
             j1.drawFichasJugador.splice(i, 1);
             this.nuevoCanvas(j1, j2);
     		fichaCont++;

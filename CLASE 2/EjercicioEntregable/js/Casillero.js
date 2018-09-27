@@ -1,10 +1,11 @@
 class Casillero{
-      constructor (paramPosX, paramPosY, paramRadio, image, color){
+      constructor (paramPosX, paramPosY, paramRadio, image, color, ocupacion){
             this.posX = paramPosX;
             this.posY = paramPosY;
             this.radio = paramRadio;
             this.img = image;
             this.color = color;
+            this.ocupacion = ocupacion;
 
         }
           
@@ -37,6 +38,9 @@ class Casillero{
         }
         getRadius(){
             return this.radio;
+        }
+        getOcupacion(){
+            return this.ocupacion;
         }
         
     }

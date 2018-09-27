@@ -50,14 +50,16 @@ for (var j = 0; j <MAX; j++) {
   let image = new Image();
         image.src ="images/fondo1.jpg";
         let color ="black";
+        let ocupacion="libre";
         let x=35; //se repite 7 veces
 let y=35; //se repite 6
 let radio=32;
+
 for (var i = 0; i < MAXFIL; i++) { 
  
 y=y+90;
 for (var j = 0; j < MAXCOL; j++) { 
- 	drawTablero[i][j]=(new Casillero (x, y, radio, image, color));
+ 	drawTablero[i][j]=(new Casillero (x, y, radio, image, color, ocupacion));
  	 x=x+105;
  	 switch (x) {
  	  case x==35:

@@ -24,4 +24,7 @@ class Tablero{
         getRadio(fil, col){
         	return this.drawCasilleros[fil][col].getRadius();
         }
+        getOcup(fil, col){
+        	return this.drawCasilleros[fil][col].getOcupacion();
+        }
 }
