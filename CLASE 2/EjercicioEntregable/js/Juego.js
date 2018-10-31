@@ -1,12 +1,14 @@
 class Juego{
    
 	 jugar(jTurno, jNoTurno, tablero){
-        
+        //el primer turno arranca por el rojo
+        //anuncia el ganador una ficha despues colocada
        this.turnoJugador(jTurno, jNoTurno, tablero);
-       if(fichaCont>7){
+       this.colocarFicha(jTurno, jNoTurno, tablero);
+       if(fichaCont>6){
        this.ganador(jTurno);
         }
-    	this.colocarFicha(jTurno, jNoTurno, tablero);
+    	
      
     }
 
@@ -93,6 +95,7 @@ class Juego{
             j1.drawFichasJugador.splice(i, 1);
             this.nuevoCanvas(j1, j2);
     		fichaCont++;
+
         this.jugar(j2, j1, tablero);
 
     }
@@ -127,16 +130,17 @@ class Juego{
       while ((tablero.getOcup(fil, col)!="libre")&&(tablero.getOcup(fil, col+1)!="libre")&&(col<MAXCOL)){
         if(tablero.obtenerColor(fil, col)==tablero.obtenerColor(fil, col+1)){
           contador++;
+          if(contador==4){
+          this.hayGanador(j1);
+          fil=0;
+          col=MAXCOL;
+        }
         }else{
           contador=1;
         }
 
         col++;
-        if(contador==4){
-          this.hayGanador(j1);
-          fil=0;
-          col=MAXCOL;
-        }
+        
         if(contador==1){
           this.recorrerVerticalmente(j1);
         }
@@ -158,17 +162,18 @@ class Juego{
                      while ((tablero.getOcup(fil, col)!="libre")&&(tablero.getOcup(fil-1, col)!="libre")&&(fil>0)){
                        if(tablero.obtenerColor(fil, col)==tablero.obtenerColor(fil-1, col)){
                             contador++;
-                        }else{
-                            contador=1;
-                        }
-                         fil--; 
-                        if(contador==4){
+                            if(contador==4){
                             console.log("Entro a ganador verticalmente");
                             console.log(j1);
                                 this.hayGanador(j1);
                                 fil=0;
                                 col=MAXCOL;
                         }
+                        }else{
+                            contador=1;
+                        }
+                         fil--; 
+                        
           
         if(contador==1){
             console.log("Entro a diagonal");
@@ -178,39 +183,77 @@ class Juego{
   	}
   }
     			
-  recorrerDiagonalmenteAtras(fil, col, pos, j1){
-                for(var fil=MAXFIL-1;fil>0;fil--){
-                    for(var col=pos;col<MAXCOL;col++){
-                        if(tablero.obtenerColor(fila, colum)==tablero.obtenerColor(fila-1, colum-1)){
+  recorrerDiagonalmenteAtras(j1){
+               console.log("Entro a diagonalmente atras");
+            let contador = 1;
+            let fil = MAXFIL-1;
+            let  col=MAXCOL-1;
+            
+                     while ((tablero.getOcup(fil, col)!="libre")&&(tablero.getOcup(fil-1, col-1)!="libre")&&(fil>0)){
+                       if(tablero.obtenerColor(fil, col)==tablero.obtenerColor(fil-1, col-1)){
+                            contador++;
+                            debugger;
+                        }else{
+                            contador=1;
+                        }
+                         fil--;
+                         col--; 
+                        if(contador==4){
+                            console.log("Entro a ganador diagonalmente atras");
+                            console.log(j1);
+                                this.hayGanador(j1);
+                                fil=0;
+                                col=-1;
+                        }
+          
+        if(contador==1){
+            console.log("Entro a diagonal adelante");
+         this.recorrerDiagonalmenteAtras(j1);
+         }
+         if(col==0){
+              fil = MAXFIL-1;
+              col=MAXCOL-1;
+            }
+       }
+
+  }
+     
+    recorrerDiagonalmenteDelante(j1){
+    		       console.log("Entro a diagonalmente adelante");
+            let contador = 1;
+            let fil = MAXFIL-1;
+            let  col=0;
+            
+              while(col<MAXCOL){
+                     while ((tablero.getOcup(fil, col)!="libre")&&(tablero.getOcup(fil-1, col+1)!="libre")&&(fil>0)&&(col<MAXCOL)){
+                       if(tablero.obtenerColor(fil, col)==tablero.obtenerColor(fil-1, col+1)){
                             contador++;
                         }else{
-                           this.recorrerDiagonalmenteDelante(fila, colum, col, j1);
+                            contador=1;
                         }
-                            if(contador==4){
-                                hayGanador(j1);
-                                fila=0;
-                                colum=MAXCOL;
-                            }
+                         fil--;
+                         col++; 
+                        if(contador==4){
+                            console.log("Entro a ganador diagonalmente adelante");
+                            console.log(j1);
+                                this.hayGanador(j1);
+                                fil=0;
+                                col=MAXCOL;
                         }
-                    }
-                }
-     
-    recorrerDiagonalmenteDelante(fil, col,pos, j1){
-    			for(var fil=MAXFIL-1;fil>0;fil--){
-                    for(var col=pos;col<MAXCOL;col++){
-    					if(tablero.obtenerColor(fila, colum)==tablero.obtenerColor(fila-1, colum+1)){
-    						contador++;
-    					}else{
-    						this.ganador(pos);
-    					}
-    						if(contador==4){
-    							this.hayGanador(j1);
-    							fila=0;
-                                colum=MAXCOL;
-    						}
-    					}
-    				}
-    			} 
+            }
+          
+        if(contador==1){
+            console.log("no gano nadie");
+         this.recorrerDiagonalmenteAtras(j1);
+         }
+         if(col==MAXCOL){
+                fil = MAXFIL-1;
+                col=0;
+            }
+       
+       
+     }
+  } 
 
                 
 hayGanador(j){

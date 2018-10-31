@@ -1,0 +1,75 @@
+.pajaro {
+ width: 81px;
+  height: 33px;
+ z-index: 10;
+ position: absolute;
+  top: 540px; 
+  left: 650px;
+ background: url('../images/pajaro.png') ;
+ animation: pajaro .500s steps(3) infinite;
+ transform: scaleX(-1.5);
+
+}
+
+@keyframes pajaro {
+	100% { background-position: -245px; }
+}
+
+/*.enemigo {
+  width: 240px;
+  height: 314px;
+  background-image: url('../images/enemigo.png');
+  animation: enemigo .9s steps(5) infinite;
+  transform: scaleX(-1);
+}
+
+
+@keyframes enemigo {
+ 100%{background-position: -1200px;}
+}
+*/
+.roca {
+  width: 121px;
+  height: 92px;
+  position: absolute;
+  top: 54px; 
+  left: 850px;
+  zoom: .4;
+  background-image: url('../images/0.png');
+  animation: roca .8s steps(6) infinite;
+ 
+}
+
+
+@keyframes roca {
+ 100%{background-position: -727px;}
+}
+
+#moneda {
+ width: 116px;
+ height: 113px;
+ position: absolute;
+  top: 30px; 
+  left: 600px;
+ background: url('../images/moneda.png') left center;
+ animation: moneda .8s steps(6) infinite;
+ transform: scale(0.3);
+}
+
+@keyframes moneda {
+ 100%{background-position: -700px;}
+}
+
+
+.pajaroMuerto {
+  width: 180px;
+  height: 108px;
+  background-image: url('../images/explosion.png');
+  animation: pajaroMuerto 0.8s steps(10);
+  animation-iteration-count: 0.9;
+  animation-fill-mode: forwards;
+}
+
+@keyframes pajaroMuerto {
+	100% { background-position: -900px; }
+}
