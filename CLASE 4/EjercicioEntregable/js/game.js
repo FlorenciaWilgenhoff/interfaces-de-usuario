@@ -27,10 +27,10 @@ function actualizar() {
 
     if(personaje.rocaColision(enemigo) && enemigo.choco == 0) {
       console.log("hubo colision con roca");
-      document.getElementById('roca').style.opacity = 0;
+     
         personaje.vidas = personaje.vidas-1;
-        personaje.monedasRecolectadas = personaje.monedasRecolectadas + 10;
         document.getElementById('vida'+personaje.vidas).src="images/vidaPerdida.png";
+         document.getElementById('roca').style.opacity = 0;
         enemigo.choco = 1;
 
         if(personaje.vidas == 0){ 

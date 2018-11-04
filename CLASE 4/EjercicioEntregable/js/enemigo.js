@@ -7,6 +7,7 @@ class Enemigo{
       this.top = this.posY;
       this.estado = "roca";
       this.choco=0;
+       this.div = document.getElementById('roca');
       this.right = this.posX + document.getElementById("roca").offsetWidth;
       this.bottom = this.posY + document.getElementById("roca").offsetHeight;  
       this.h=document.getElementById("roca").offsetHeight;
@@ -27,6 +28,7 @@ class Enemigo{
     this.bottom = this.posY + document.getElementById("roca").offsetHeight;
     if(this.posX > 1500) {
       this.choco=0;
+      document.getElementById('roca').style.opacity=1;
       this.posX = 0;
       this.posY = Math.floor((Math.random() * 1300) + 1350);
     }

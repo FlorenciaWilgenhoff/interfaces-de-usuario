@@ -49,55 +49,28 @@ class Personaje{
       }
     }
 
-  monedaColision(e) { 
-        let personaje = document.getElementById('personaje');
-     let ry= personaje.offsetTop;
-        let rx = personaje.offsetLeft;
-        let rh = personaje.offsetHeight;
-        let rw = personaje.offsetWidth;
-
-          let ey = e.top;
-          let ex = e.left;
-          let eh = e.h;
-          let ew = e.w;
-      return!(((ry + rh) < (ey)) ||
-            (ry> (ey + eh)) ||
-            ((rx + rw) < ex) ||
-            (rx > (ex + ew)));
-  
+  monedaColision(e) { //que reste un poco mas de la izquierda, y ver cuanto suma la derecha
+        if(e.div.style.opacity==1){
+      let oLeft = e.left-75;
+      let oRight = e.right;
+      let oTop = e.top;
+      let oBottom = e.bottom;
+   return !(this.left > oRight || this.right < oLeft || this.top > oBottom || this.bottom < oTop);
+    }else {
     return false;
   }
 
+}
+
   
-  rocaColision(e) {
-    let personaje = document.getElementById('personaje');
-     let ry= personaje.offsetTop;
-        let rx = personaje.offsetLeft;
-        let rh = personaje.offsetHeight;
-        let rw = personaje.offsetWidth;
-
-       console.log(e.top);
-          let ey = e.top;
-          let ex = e.left;
-          let eh = e.h;
-          let ew = e.w;
-       /* console.log(ry);
-        console.log(rh);
-        console.log(rx);
-        console.log(rw);
-        console.log(ey);
-        console.log(eh);
-        console.log(ex);
-        console.log(ew);
-      debugger;
-*/
-        return!(
-            ((ry + rh) < (ey)) ||
-            (ry> (ey + eh)) ||
-            ((rx + rw) < ex) ||
-            (rx > (ex + ew)));
-
+  rocaColision(e) {//arreglar el alto
+     let oLeft = e.left-75;
+    let oRight = e.right;
+    let oTop = e.top;
+    let oBottom = e.bottom;
+    return !(this.left > oRight || this.right < oLeft );
     }
+  
   
 }
 

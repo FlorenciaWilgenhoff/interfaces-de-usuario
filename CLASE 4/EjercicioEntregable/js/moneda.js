@@ -4,6 +4,7 @@ class Moneda{
 		this.posY = 550;
 		this.left = this.posX;
 	    this.top = this.posY;
+	     this.div = document.getElementById('moneda');
 	    this.right = this.posX + document.getElementById('moneda').offsetWidth;
 	    this.bottom = this.posY + document.getElementById('moneda').offsetHeight;
 	}	
