@@ -21,10 +21,14 @@
 
      <div id="nube">
  <div class="score">Puntos : <span id="score-num">0</span></div>
+ <div id="mensaje">
+        <p>PERDISTE</p>
+        <p>PUNTOS: <span id="score-mensaje">0</span></p>
+        <button type="button" class="btn-menu" id="btn-reiniciar" name="button">REINICIAR</button>
+      </div>
       <div id="star">
               <div id="personaje" class="pajaro"></div>
-              <div id="moneda"></div>
-              <div class="enemigo" id="enemigo"></div>
+              <div id="moneda"></div> 
               <div class="roca" id="roca"></div>
           
     </div>
@@ -32,6 +36,7 @@
   </div>
 
   </body>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
   <script src="js/personaje.js" charset="utf-8"></script>
   <script src="js/enemigo.js" charset="utf-8"></script>
   <script src="js/moneda.js" charset="utf-8"></script>

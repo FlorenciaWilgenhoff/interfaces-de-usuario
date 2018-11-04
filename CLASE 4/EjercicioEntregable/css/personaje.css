@@ -15,21 +15,9 @@
 	100% { background-position: -245px; }
 }
 
-/*.enemigo {
-  width: 240px;
-  height: 314px;
-  background-image: url('../images/enemigo.png');
-  animation: enemigo .9s steps(5) infinite;
-  transform: scaleX(-1);
-}
 
-
-@keyframes enemigo {
- 100%{background-position: -1200px;}
-}
-*/
 .roca {
-  width: 121px;
+  width: 128px;
   height: 92px;
   position: absolute;
   top: 54px; 
@@ -62,14 +50,14 @@
 
 
 .pajaroMuerto {
-  width: 180px;
-  height: 108px;
+  width: 225px;
+  height: 135px;
   background-image: url('../images/explosion.png');
-  animation: pajaroMuerto 0.8s steps(10);
+  animation: pajaroMuerto 0.8s steps(4);
   animation-iteration-count: 0.9;
   animation-fill-mode: forwards;
 }
 
 @keyframes pajaroMuerto {
-	100% { background-position: -900px; }
+	100% { background-position: -500px; }
 }

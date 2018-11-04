@@ -9,6 +9,8 @@ class Enemigo{
       this.choco=0;
       this.right = this.posX + document.getElementById("roca").offsetWidth;
       this.bottom = this.posY + document.getElementById("roca").offsetHeight;  
+      this.h=document.getElementById("roca").offsetHeight;
+      this.w=document.getElementById("roca").offsetWidth;
 	}
 
 	dibujarRoca() {

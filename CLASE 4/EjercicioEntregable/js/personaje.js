@@ -1,15 +1,13 @@
-const pisoY = 550;
 class Personaje{
 	constructor(){
 		this.posX = 650;
-		this.posY=pisoY;
+		this.posY=550;
 		this.estado ="pajaro";
 		this.monedasRecolectadas = 0;
 		this.vidas = 5;
 		this.left = this.posX;
 	    this.top = this.posY;
 	    this.acelerarY = 0;
-	    this.estaEnElPiso = true;
     	this.velocidadY = 0;
 	    this.right = this.posX + document.getElementById("personaje").offsetWidth;
 	    this.bottom = this.posY + document.getElementById('personaje').offsetHeight;
@@ -30,52 +28,77 @@ class Personaje{
 	    this.velocidadY += this.acelerarY;
 	    this.posY += this.velocidadY;
 	    this.acelerarY = 0;
-	    if(this.posY >= pisoY) {
+	    if(this.posY >= 550) {
 	      if(this.estado != 'pajaroMuerto') {
 	        this.estado = 'pajaro';
 	      }
 	    }
 	  }
 
+    aplicarFuerza(fuerza) {
+    this.acelerarY += fuerza;
+    }
+   
+    moverCostados(fuerza){
+      this.posX+=fuerza;
+    }
+    volar() {
+      if(this.posY >= 550) {
+        this.velocidadY *= 0;
+        this.posY = 550;
+      }
+    }
 
+  monedaColision(e) { 
+        let personaje = document.getElementById('personaje');
+     let ry= personaje.offsetTop;
+        let rx = personaje.offsetLeft;
+        let rh = personaje.offsetHeight;
+        let rw = personaje.offsetWidth;
 
-  monedaColision(other) {
-    if(document.getElementById('personaje').style.opacity==1){
-      let oLeft = other.left+80;
-      let oRight = other.right;
-      let oTop = other.top;
-      let oBottom = other.bottom;
-      console.log("Izquierda:"+oLeft);
-      console.log("Derecha:"+oRight);
-      console.log("top:"+oTop);
-      console.log("fondo:"+oBottom);
-      return !(this.left > oRight || this.right < oLeft || this.top > oBottom || this.bottom < oTop);
-    }else {
+          let ey = e.top;
+          let ex = e.left;
+          let eh = e.h;
+          let ew = e.w;
+      return!(((ry + rh) < (ey)) ||
+            (ry> (ey + eh)) ||
+            ((rx + rw) < ex) ||
+            (rx > (ex + ew)));
+  
     return false;
   }
-  }
 
-  rocaColision(other) {
-    let oLeft = other.left+30;
-    let oRight = other.right-20;
-    let oTop = other.top+50;
-    let oBottom = other.bottom;
-    return !(this.left > oRight || this.right < oLeft || this.top > oBottom || this.bottom < oTop);
-  }
+  
+  rocaColision(e) {
+    let personaje = document.getElementById('personaje');
+     let ry= personaje.offsetTop;
+        let rx = personaje.offsetLeft;
+        let rh = personaje.offsetHeight;
+        let rw = personaje.offsetWidth;
 
-  aplicarFuerza(fuerza) {
-    this.acelerarY += fuerza;
-  }
- 
-  moverCostados(fuerza){
-  	this.posX+=fuerza;
-  }
-  piso() {
-    if(this.posY >= pisoY) {
-      this.velocidadY *= 0;
-      this.posY = pisoY;
+       console.log(e.top);
+          let ey = e.top;
+          let ex = e.left;
+          let eh = e.h;
+          let ew = e.w;
+       /* console.log(ry);
+        console.log(rh);
+        console.log(rx);
+        console.log(rw);
+        console.log(ey);
+        console.log(eh);
+        console.log(ex);
+        console.log(ew);
+      debugger;
+*/
+        return!(
+            ((ry + rh) < (ey)) ||
+            (ry> (ey + eh)) ||
+            ((rx + rw) < ex) ||
+            (rx > (ex + ew)));
+
     }
-  }
+  
 }
 
       
