@@ -14,7 +14,7 @@ class Personaje{
 	}
 
 	dibujarPersonaje() {
-		if((this.estado=="pajaro")||(this.estado=="pajaroMuerto")){
+		if((this.estado=="pajaro")||(this.estado=="pajaroMuerto")||(this.estado=="pajaroChocado")){
 		document.getElementById('personaje').className = this.estado;
 		document.getElementById('personaje').style.left = this.posX.toString() + 'px';
     	document.getElementById('personaje').style.top = this.posY.toString() + 'px';
@@ -29,7 +29,7 @@ class Personaje{
 	    this.posY += this.velocidadY;
 	    this.acelerarY = 0;
 	    if(this.posY >= 550) {
-	      if(this.estado != 'pajaroMuerto') {
+	      if(this.estado != 'pajaroMuerto'){
 	        this.estado = 'pajaro';
 	      }
 	    }
@@ -49,27 +49,13 @@ class Personaje{
       }
     }
 
-  monedaColision(e) { //que reste un poco mas de la izquierda, y ver cuanto suma la derecha
-        if(e.div.style.opacity==1){
-      let oLeft = e.left-75;
-      let oRight = e.right;
-      let oTop = e.top;
-      let oBottom = e.bottom;
-   return !(this.left > oRight || this.right < oLeft || this.top > oBottom || this.bottom < oTop);
-    }else {
-    return false;
-  }
-
-}
-
-  
-  rocaColision(e) {//arreglar el alto
-     let oLeft = e.left-75;
-    let oRight = e.right;
-    let oTop = e.top;
-    let oBottom = e.bottom;
-    return !(this.left > oRight || this.right < oLeft );
-    }
+  monedaColision(e) { 
+      return (Math.abs(e.right - this.top - 75) < 10 && Math.abs(e.top - this.left) < 30);
+	}
+ 
+  rocaColision(e) {
+	return (Math.abs(e.right - this.top - 75) < 10 && Math.abs(e.top - this.left) < 30);
+	}
   
   
 }

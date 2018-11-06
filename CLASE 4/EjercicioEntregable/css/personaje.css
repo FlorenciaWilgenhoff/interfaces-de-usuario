@@ -22,10 +22,9 @@
   position: absolute;
   top: 54px; 
   left: 850px;
-  zoom: .4;
-  background-image: url('../images/0.png');
+  background-image: url('../images/roca.png');
   animation: roca .8s steps(6) infinite;
- 
+ transform: scale(0.4);
 }
 
 
@@ -50,8 +49,8 @@
 
 
 .pajaroMuerto {
-  width: 225px;
-  height: 135px;
+  width: 118px;
+  height: 100px;
   background-image: url('../images/explosion.png');
   animation: pajaroMuerto 0.8s steps(4);
   animation-iteration-count: 0.9;
@@ -59,5 +58,18 @@
 }
 
 @keyframes pajaroMuerto {
-	100% { background-position: -500px; }
+	100% { background-position: 437px; }
+}
+
+.pajaroChocado {
+  width: 192px;
+  height: 140px;
+  background-image: url('../images/choque.png');
+  animation: pajaroChocado 0.8s steps(5);
+  animation-iteration-count: 0.5;
+  animation-fill-mode: forwards;
+}
+
+@keyframes pajaroChocado {
+  100% { background-position: -960px; }
 }

@@ -1,7 +1,7 @@
 class Enemigo{
 	constructor(){
 	  this.posX = 0;
-      this.posY = 1300;
+      this.posY = 450;
       this.colision=0;	
       this.left = this.posX;
       this.top = this.posY;
@@ -30,7 +30,7 @@ class Enemigo{
       this.choco=0;
       document.getElementById('roca').style.opacity=1;
       this.posX = 0;
-      this.posY = Math.floor((Math.random() * 1300) + 1350);
+      this.posY = Math.floor((Math.random() * 450) + 455);
     }
   }
 }

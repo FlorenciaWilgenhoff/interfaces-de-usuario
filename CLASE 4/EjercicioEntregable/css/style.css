@@ -101,6 +101,21 @@ button {
   transition: all .1s linear;
 }
 
+#btn-reiniciarDos {
+  width: 130px;
+  height:120px;
+  border: 0;
+  background: transparent;
+  border-radius: 4px;
+  box-shadow: 0 5px 0 transparent;
+  color: black;
+  cursor: pointer;
+  font: inherit;
+  outline: 0;
+  padding: 12px 20px;
+  transition: all .1s linear;
+}
+
 button:active {
   box-shadow: 0 2px 0 white;
   transform: translateY(3px);
@@ -124,6 +139,27 @@ button:active {
   text-align: center;
   font-weight:900;
    color: white;
+  font-size: 30px;
+  z-index: 10;
+
+   border-radius: 10px;
+ 
+  opacity: 0.6;
+
+}
+
+#mensajeDos {
+  display: none;
+
+  margin-top: 100px;
+  padding: 20px;
+  background-color: white;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+  text-align: center;
+  font-weight:900;
+   color: black;
   font-size: 30px;
   z-index: 10;
 
