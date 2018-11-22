@@ -99,6 +99,8 @@
 	                  src : reply.statuses[i].user.profile_image_url,
 	                 user : reply.statuses[i].user.screen_name,
 	                 text : reply.statuses[i].text,
+	                 likes: tweet.favorite_count,
+	                 rts : tweet.retweet_count
 	                };
 	                tweetsArray.push(json);     
 	              }
@@ -112,7 +114,12 @@
 	            "width": "60",
 	            "height":"50"
 	          });
-              $('.comentarios').append('<h2 class="usuario">'+tweetsArray[i].user+'</h2><img class="d-block" src="'+tweetsArray[i].src+'"><div class="comentarios">'+tweetsArray[i].text+'</div>');
+	          console.log(reply.statuses[i]);
+	          $('.likes').html(tweetsArray[i].likes);
+	          $('.rts').html(tweetsArray[i].rts);
+              $('.comentarios').append('<h2 class="usuario">'+tweetsArray[i].user+'</h2><img class="d-block" src="'+tweetsArray[i].src+'">'+'<div class="comentarios">'+tweetsArray[i].text+'</div>'+'<div class="likes">'+tweetsArray[i].likes+'</div>'+'<div class="rts">'+tweetsArray[i].rts+'</div>');
+	          $('.heart').css({'animation':'latidos 1s infinite'});
+	          $('.heart').css({'animation':'3s color linear infinite'})
 	        }
 	        
 	      

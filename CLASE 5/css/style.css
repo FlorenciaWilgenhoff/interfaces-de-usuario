@@ -153,3 +153,28 @@ footer {
     font-family: alegreya;
     src: url('../fonts/alegreyal.otf');
 }
+
+
+.heart {
+	animation: 3s color linear infinite;
+	/*animation: latidos .5s infinite;*/
+	transform-origin: center;
+	display: inline-block;
+	/*display: inline-block;
+	font-size: 150px;
+	text-shadow: 0 0 10px #222,1px 1px  0 #450505;
+	animation: latidos .5s infinite;
+	transform-origin: center;*/
+	margin: 10px;
+	color: white;
+}
+
+.likes {
+	margin: 10px;
+	color: white;
+}
+
+
+.bottomcontainer{
+	position : relative;
+}
