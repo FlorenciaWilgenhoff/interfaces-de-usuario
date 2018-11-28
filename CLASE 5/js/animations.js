@@ -1,1 +1,1 @@
-$('.heart').css({'animation':'3s color linear infinite'})
+$('.heart').css({'animation':'3s color linear infinite'});

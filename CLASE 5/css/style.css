@@ -8,12 +8,40 @@ header {
 	background-color: #232323;
 }
 footer {
-	height: 101px;
+	height: 121px;
 	background-color: #232323;
+}
+.copyright{
+	color : black;
+	margin-top: -3%;
+	margin-left: 45%;
+}
+.fa-copyright {
+	color : black;
+	margin-top: -1%;
+	margin-left: -11%;
 }
 .gclogo {
 	max-width: 25%;
 }
+
+.fblogo {
+	max-width: 8.5%;
+	margin-top: -11%;
+	margin-left: 40%;
+}
+.iglogo {
+	max-width: 5%;
+	margin-top: -7%;
+	margin-left: 50%;
+}
+
+.twlogo {
+	max-width: 5%;
+	margin-top: 1.5%;
+	margin-left: 58%;
+}
+
 .useravatar {
 	margin-top: -1.5%;
 	margin-left: 70%;
@@ -28,6 +56,12 @@ footer {
 	margin-left: 0.4%;
 	width: 400px; 
 	height: 200px;
+	transition: all 0.5s;
+	animation-name: pulse_animation;
+    animation-duration: 1500ms;
+    transform-origin:50% 50%;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 .discnumber {
 	width: 60px;
@@ -62,6 +96,16 @@ footer {
 .recommimg {
 	margin-left: 15%;
 	max-width: 70%;
+	height: 350px;
+}
+.comentariosimple {
+	padding: 2%;
+}
+.xwingimg {
+	margin-top: -4%;
+	margin-left: 15%;
+	max-width: 70%;
+	width: 600px;
 	height: 350px;
 }
 .recommtitle, .lastplayedtitle, .desctitle {
@@ -142,39 +186,67 @@ footer {
 	color: #00a4d3;
 	font-size: 220%;
 }
-.loading{
+.loading {
 	 width: 100px;
 	 height: 100px;
 	 margin-top: 10%;
 	 position: absolute;
 	 z-index: 20;
- }
+}
+.top5li {
+	animation-duration: 1.5s;
+  	animation-name: slidein;
+}
+.comentariosimple{
+	border: solid 2px black;
+	background-color: #303030;
+}
+@keyframes slidein {
+  from {
+    margin-left: 30%;
+    width: 100%
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+@keyframes pulse_animation {
+    0% { transform: scale(1); }
+    30% { transform: scale(1); }
+    40% { transform: scale(1.05); }
+    50% { transform: scale(1); }
+    60% { transform: scale(1); }
+    70% { transform: scale(1.03); }
+    80% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
 @font-face {
     font-family: alegreya;
     src: url('../fonts/alegreyal.otf');
 }
-
-
-.heart {
-	animation: 3s color linear infinite;
-	/*animation: latidos .5s infinite;*/
-	transform-origin: center;
-	display: inline-block;
-	/*display: inline-block;
-	font-size: 150px;
-	text-shadow: 0 0 10px #222,1px 1px  0 #450505;
-	animation: latidos .5s infinite;
-	transform-origin: center;*/
-	margin: 10px;
-	color: white;
+.loading {
+	max-width: 50%;
+	margin-left: 43%;
+	margin-top: 2%;
 }
-
+.retweet {
+	margin-top: -4%;
+}
+.fa-retweet {
+	margin-top: 2.35%;
+	margin-left: 4%;
+}
+.rts {
+	margin-top: -2%;
+	margin-left: 6%;
+}
 .likes {
-	margin: 10px;
 	color: white;
+	margin-top: -2%;
+	margin-left: 2%;
 }
-
-
 .bottomcontainer{
 	position : relative;
 }
