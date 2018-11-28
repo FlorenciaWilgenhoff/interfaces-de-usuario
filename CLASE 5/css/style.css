@@ -90,16 +90,13 @@ footer {
 	margin-right: 2.9%;
 	margin-bottom: 2.5%;
 	width: auto;
-	height: 300px;
+	height: auto;
 	opacity: 0.8;
 }
 .recommimg {
 	margin-left: 15%;
 	max-width: 70%;
 	height: 350px;
-}
-.comentariosimple {
-	padding: 2%;
 }
 .xwingimg {
 	margin-top: -4%;
@@ -189,17 +186,20 @@ footer {
 .loading {
 	 width: 100px;
 	 height: 100px;
-	 margin-top: 10%;
-	 position: absolute;
+	 margin-top: -10%;
 	 z-index: 20;
 }
 .top5li {
 	animation-duration: 1.5s;
   	animation-name: slidein;
 }
+.buttonsgroup {
+	margin-bottom: 0.5%;
+}
 .comentariosimple{
 	border: solid 2px black;
 	background-color: #303030;
+	padding: 1%;
 }
 @keyframes slidein {
   from {
