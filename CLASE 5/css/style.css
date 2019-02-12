@@ -11,6 +11,9 @@ footer {
 	height: 121px;
 	background-color: #232323;
 }
+.container{
+	color: #00a4d3;
+}
 .copyright{
 	color : black;
 	margin-top: -3%;

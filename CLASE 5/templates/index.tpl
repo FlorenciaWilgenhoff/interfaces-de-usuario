@@ -1,28 +1,6 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/hover.css">
-		<link rel="stylesheet" type="text/css" href="css/animations.css">
-		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-		<title>GameCenter</title>
-	</head>
-	<body>
-		<header>
-			<nav class="navbar">
-	 	  		<div class="dropdown">
-				  	<a class="tohome" href=""><img class="gclogo" src="images/gclogo.png"></a>
-					<input type="text" class="form-control search" placeholder="Buscar juego...">
-					<button type="submit" class="btn btn-primary filters">Filtros</button>
-				</div>
-				<img class="useravatar" src="images/useravatar.png">
-	  			<img class="shutdown" src="images/shutdown.png">
-			</nav>
-		</header>
-		<div class="fullcontainer">
+{include file="header.tpl"}
+
+<div class="fullcontainer">
 			<div class="row">
 				<div class="col-md-8 col-xs-8 col-lg-8">
 					<div class="card recomm">
@@ -83,17 +61,6 @@
 					</div>
 				</div>
 			</div>
-		<footer>
-			<img class="twlogo" src="images/twlogo.png">
-			<img class="iglogo" src="images/instlogo.png">
-			<img class="fblogo" src="images/fblogo.png">
-			<p class="copyright">Copyright. All rights reserved.</p>
-		</footer>
-		<script type="text/javascript" src="js/librerias/codebird.js"></script>
-		<script type="text/javascript" src="js/librerias/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="js/librerias/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/librerias/popper.min.js"></script>
-		<script type="text/javascript" src="js/script.js"></script>
-		<script type="text/javascript" src="js/animations.js"></script>
-	</body>
-</html>
+
+
+{include file="footer.tpl"}
