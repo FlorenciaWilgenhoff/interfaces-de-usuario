@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-02-2019 a las 19:30:09
--- Versión del servidor: 10.1.28-MariaDB
--- Versión de PHP: 7.1.10
+-- Tiempo de generación: 14-02-2019 a las 20:38:28
+-- Versión del servidor: 10.1.13-MariaDB
+-- Versión de PHP: 5.6.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `gamecenter`
+-- Base de datos: `gamecenterwil`
 --
 
 -- --------------------------------------------------------
@@ -30,8 +28,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categoria` (
   `id_categoria` int(11) NOT NULL,
-  `nombre_categoria` varchar(50) NOT NULL
+  `nombre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`id_categoria`, `nombre`) VALUES
+(13, 'accion'),
+(14, 'drama');
 
 -- --------------------------------------------------------
 
@@ -41,11 +47,10 @@ CREATE TABLE `categoria` (
 
 CREATE TABLE `comentario` (
   `id_comentario` int(11) NOT NULL,
-  `fk_id_moto` int(11) NOT NULL,
-  `fk_id_usuario` int(11) NOT NULL,
-  `comentario` varchar(300) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `puntaje` tinyint(4) NOT NULL,
-  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `fk_id_juego` int(11) NOT NULL,
+  `comentario` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -56,9 +61,16 @@ CREATE TABLE `comentario` (
 
 CREATE TABLE `imagen` (
   `id_imagen` int(11) NOT NULL,
-  `ruta` varchar(255) NOT NULL,
-  `fk_id_moto` int(11) NOT NULL
+  `path` varchar(35) NOT NULL,
+  `fk_id_juego` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `imagen`
+--
+
+INSERT INTO `imagen` (`id_imagen`, `path`, `fk_id_juego`) VALUES
+(1, 'images/GTA.jpg', 6);
 
 -- --------------------------------------------------------
 
@@ -68,11 +80,18 @@ CREATE TABLE `imagen` (
 
 CREATE TABLE `juego` (
   `id_juego` int(11) NOT NULL,
-  `fk_id_categoria` int(11) NOT NULL,
-  `nombre_juego` varchar(50) NOT NULL,
-  `descripcion_juego` varchar(300) NOT NULL,
-  `precio` int(11) NOT NULL
+  `nombre` varchar(35) NOT NULL,
+  `descripcion` varchar(500) NOT NULL,
+  `destacado` tinyint(4) NOT NULL,
+  `fk_id_categoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `juego`
+--
+
+INSERT INTO `juego` (`id_juego`, `nombre`, `descripcion`, `destacado`, `fk_id_categoria`) VALUES
+(6, 'GTA', ' Grand Theft Auto cuenta la historia de distintos criminales y aunque sean varios, por una razón se van relacionando y envolviendo en problemas a más personajes conforme va pasando el tiempo. Generalmente los protagonistas son antihéroes.', 3, 13);
 
 -- --------------------------------------------------------
 
@@ -82,9 +101,9 @@ CREATE TABLE `juego` (
 
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `nombre` varchar(25) NOT NULL,
   `email` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `rol` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -97,32 +116,33 @@ CREATE TABLE `usuario` (
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id_categoria`),
-  ADD KEY `id_marca` (`id_categoria`),
-  ADD KEY `id_marca_2` (`id_categoria`);
+  ADD UNIQUE KEY `id_categoria` (`id_categoria`),
+  ADD KEY `id_categoria_2` (`id_categoria`);
 
 --
 -- Indices de la tabla `comentario`
 --
 ALTER TABLE `comentario`
   ADD PRIMARY KEY (`id_comentario`),
-  ADD KEY `fk_id_moto` (`fk_id_moto`),
-  ADD KEY `fk_id_usuario` (`fk_id_usuario`) USING BTREE,
-  ADD KEY `fk_id_moto_2` (`fk_id_moto`) USING BTREE;
+  ADD KEY `fk_id_juego` (`fk_id_juego`);
 
 --
 -- Indices de la tabla `imagen`
 --
 ALTER TABLE `imagen`
   ADD PRIMARY KEY (`id_imagen`),
-  ADD KEY `ruta` (`ruta`),
-  ADD KEY `fk_id_moto` (`fk_id_moto`);
+  ADD UNIQUE KEY `fk_id_juego_3` (`fk_id_juego`),
+  ADD KEY `fk_id_juego` (`fk_id_juego`),
+  ADD KEY `fk_id_juego_2` (`fk_id_juego`);
 
 --
 -- Indices de la tabla `juego`
 --
 ALTER TABLE `juego`
   ADD PRIMARY KEY (`id_juego`),
-  ADD KEY `id_marca` (`fk_id_categoria`);
+  ADD UNIQUE KEY `fk_id_categoria_2` (`fk_id_categoria`),
+  ADD KEY `fk_id_categoria` (`fk_id_categoria`),
+  ADD KEY `fk_id_categoria_3` (`fk_id_categoria`);
 
 --
 -- Indices de la tabla `usuario`
@@ -138,32 +158,27 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
-
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `imagen`
 --
 ALTER TABLE `imagen`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
-
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `juego`
 --
 ALTER TABLE `juego`
-  MODIFY `id_juego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
+  MODIFY `id_juego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Restricciones para tablas volcadas
 --
@@ -172,21 +187,19 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`fk_id_moto`) REFERENCES `juego` (`id_juego`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `comentario_ibfk_2` FOREIGN KEY (`fk_id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`fk_id_juego`) REFERENCES `juego` (`id_juego`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `imagen`
 --
 ALTER TABLE `imagen`
-  ADD CONSTRAINT `imagen_ibfk_1` FOREIGN KEY (`fk_id_moto`) REFERENCES `juego` (`id_juego`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `imagen_ibfk_1` FOREIGN KEY (`fk_id_juego`) REFERENCES `juego` (`id_juego`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `juego`
 --
 ALTER TABLE `juego`
-  ADD CONSTRAINT `juego_ibfk_1` FOREIGN KEY (`fk_id_categoria`) REFERENCES `categoria` (`id_categoria`);
-COMMIT;
+  ADD CONSTRAINT `juego_ibfk_2` FOREIGN KEY (`fk_id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
